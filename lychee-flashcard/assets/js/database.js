@@ -623,7 +623,6 @@ const data = {
           "F_tC68xbgAEiPKX.jpeg",
           "GKE-8SaaIAAQSlM.jpeg",
           "GOHIhO3XQAEC1Jw.jpeg",
-          "GRo1XNcaUAIaO0n.jpeg",
           "GS7LXMobIAMCDRC.jpeg",
           "GWIyD24bwAAdSOx.jpeg",
         ],
@@ -670,6 +669,7 @@ const data = {
           "GPdIpZIa8AAyEkG.jpeg",
           "GQ1GPHmbsAAZlI_.jpeg",
           "GR4HNeyasAAJmCb.jpeg",
+          "GRo1XNcaUAIaO0n.jpeg",
         ],
       },
       eve: {
