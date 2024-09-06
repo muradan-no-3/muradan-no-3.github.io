@@ -352,6 +352,31 @@ window.addEventListener("DOMContentLoaded", () => {
     if (currentSession.result) {
       document.getElementById("result-wrapper").classList.add("active");
       aWrapper.classList.remove("active");
+
+      const shareElm = document.getElementById("result-share");
+      const modeName = currentSession.mode === "select" ? "4択" : currentSession.mode === "select" ? "入力" : "---";
+      const settingName =
+        currentSession.setting === "artist_photo"
+          ? "アー写"
+          : currentSession.setting === "other_photo"
+          ? "写真"
+          : currentSession.setting === "color"
+          ? "メンカラ"
+          : currentSession.setting === "copy"
+          ? "キャッチコピー"
+          : "---";
+      const resultHref =
+        "https://x.com/intent/post?text=■━━━━━━━━━━━□%0A%20┃%20サークルライチ記憶帖%20┃%0A□━━━━━━━━━━━■%0A%0A【" +
+        modeName +
+        "モード】（" +
+        settingName +
+        "で出題）で" +
+        currentSession.questioning +
+        "問中" +
+        (currentSession.correct ?? 0) +
+        "問正解しました！%0A%0A%0Aサークルライチのメンバーを覚えよう！%0A%23サークルライチ記憶帖%0Ahttps%3A%2F%2Fmuradan-no-3.github.io%2Flychee-flashcard%2F";
+
+      shareElm.href = resultHref;
     }
     qNext.classList.add("disabled");
   }

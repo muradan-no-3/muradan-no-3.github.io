@@ -194,6 +194,10 @@ label:has(input[type="radio"]:checked) {
   }
 }
 
+label:has(input[type="checkbox"]) {
+  cursor: pointer;
+}
+
 *[role="button"],
 button {
   cursor: pointer;
@@ -761,7 +765,28 @@ header:has(#headaer-nav-contoroller:checked) + main {
         color: #fff;
         content: "\e5ca";
         opacity: 0;
+        transition:
+          opacity 0.1s ease,
+          rotate 0.1s ease;
+        rotate: 0deg;
+      }
+
+      @media (hover: hover) {
         transition: opacity 0.1s ease;
+
+        &:hover {
+          opacity: 0.8;
+
+          &::before {
+            scale: 1.1;
+          }
+
+          &::after {
+            opacity: 0.5;
+            rotate: 10deg;
+            scale: 1.1;
+          }
+        }
       }
     }
 
@@ -1236,6 +1261,30 @@ main {
       &::before {
         font-size: 36px;
       }
+
+      @media (hover: hover) {
+        &:hover {
+          animation: scaleBounce 0.2s ease;
+
+          @keyframes scaleBounce {
+            0% {
+              scale: 1;
+            }
+
+            65% {
+              scale: 1.1;
+            }
+
+            100% {
+              scale: 1;
+            }
+          }
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      }
     }
   }
 }
@@ -1290,6 +1339,16 @@ main {
         border-radius: 4px;
       }
 
+      @media (hover: hover) {
+        &:hover::before {
+          color: var(--color-ui-purple);
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      }
+
       &.disabled {
         pointer-events: none;
       }
@@ -1323,7 +1382,7 @@ main {
           }
 
           &:active {
-            transform: translateY(1px);
+            scale: 0.97;
           }
         }
 
@@ -1494,6 +1553,41 @@ main {
   }
 }
 
+a.rounded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  margin-top: 16px;
+  border-radius: 9999px;
+}
+
+#result-share {
+  position: relative;
+  width: 240px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    margin: 2px;
+    content: "";
+    border: 2px solid var(--alpha-text-gray-44);
+    border-radius: 9999px;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: invert(100%);
+  }
+}
+
 #result-closer {
   display: flex;
   gap: 4px;
@@ -1513,6 +1607,13 @@ main {
 
     100% {
       opacity: 0;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-ui-purple);
+      animation: none;
     }
   }
 }
@@ -1634,9 +1735,22 @@ main {
   width: 48px;
   height: 48px;
   color: var(--color-text-gray);
+  cursor: pointer;
 
   &::before {
     font-size: 32px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      &::before {
+        color: var(--color-ui-purple);
+      }
+    }
+
+    &:active {
+      transfrom: translateY(1px);
+    }
   }
 }
 

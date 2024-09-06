@@ -1,7 +1,6 @@
 window.addEventListener("load", () => {
   const buttons = document.querySelectorAll(".js-accordion-button");
 
-  console.log(buttons);
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       toggleAccordion(button);

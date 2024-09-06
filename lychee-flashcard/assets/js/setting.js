@@ -105,13 +105,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const mode = qmode.value;
       const list = qlist.value;
+      const setting = qsetting.value;
       const usingList = initializeRandomArray(list);
 
       const firstQ = getDataRandom(usingList);
       setQuestion(firstQ);
       setAnswer(firstQ);
 
-      startSession(mode, list);
+      startSession(mode, list, setting);
 
       const qWrapper = document.getElementById("question-wrapper");
       const aWrapper = document.getElementById("answer-wrapper");
@@ -166,12 +167,13 @@ window.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", () => {
         const mode = button.getAttribute("data-mode");
         const list = button.getAttribute("data-list");
-        startSession(mode, list);
+        const setting = qsetting.value;
+        startSession(mode, list, setting);
       });
     });
   });
 
-  function startSession(mode, list) {
+  function startSession(mode, list, setting) {
     sessionReset();
 
     const inputMode = document.getElementById("q-mode");
@@ -213,6 +215,7 @@ window.addEventListener("DOMContentLoaded", () => {
       questioning: N,
       mode: mode,
       list: list,
+      setting: setting,
     });
 
     const nextQ = document.getElementById("nextQ");

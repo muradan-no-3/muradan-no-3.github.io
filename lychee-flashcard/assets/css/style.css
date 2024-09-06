@@ -164,6 +164,10 @@ label:has(input[type=radio]:checked)::after {
   border-radius: 100%;
 }
 
+label:has(input[type=checkbox]) {
+  cursor: pointer;
+}
+
 *[role=button],
 button {
   cursor: pointer;
@@ -783,8 +787,30 @@ header:has(#headaer-nav-contoroller:checked) + main {
   color: #fff;
   content: "\e5ca";
   opacity: 0;
-  -webkit-transition: opacity 0.1s ease;
-  transition: opacity 0.1s ease;
+  -webkit-transition: opacity 0.1s ease, rotate 0.1s ease;
+  transition: opacity 0.1s ease, rotate 0.1s ease;
+  rotate: 0deg;
+}
+@media (hover: hover) {
+  .setting-checkboxes label:has(input[type=checkbox]),
+  #setting-checkboxes label:has(input[type=checkbox]) {
+    -webkit-transition: opacity 0.1s ease;
+    transition: opacity 0.1s ease;
+  }
+  .setting-checkboxes label:has(input[type=checkbox]):hover,
+  #setting-checkboxes label:has(input[type=checkbox]):hover {
+    opacity: 0.8;
+  }
+  .setting-checkboxes label:has(input[type=checkbox]):hover::before,
+  #setting-checkboxes label:has(input[type=checkbox]):hover::before {
+    scale: 1.1;
+  }
+  .setting-checkboxes label:has(input[type=checkbox]):hover::after,
+  #setting-checkboxes label:has(input[type=checkbox]):hover::after {
+    opacity: 0.5;
+    rotate: 10deg;
+    scale: 1.1;
+  }
 }
 .setting-checkboxes label:has(input[type=checkbox]:checked)::before,
 #setting-checkboxes label:has(input[type=checkbox]:checked)::before {
@@ -1356,6 +1382,38 @@ main {
 #answer-control li button::before {
   font-size: 36px;
 }
+@media (hover: hover) {
+  #answer-control li button:hover {
+    -webkit-animation: scaleBounce 0.2s ease;
+            animation: scaleBounce 0.2s ease;
+  }
+  @-webkit-keyframes scaleBounce {
+    0% {
+      scale: 1;
+    }
+    65% {
+      scale: 1.1;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+  @keyframes scaleBounce {
+    0% {
+      scale: 1;
+    }
+    65% {
+      scale: 1.1;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+  #answer-control li button:active {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+}
 
 #question-control {
   position: fixed;
@@ -1402,6 +1460,15 @@ main {
   background: var(--alpha-bg-black-dd);
   border-radius: 4px;
 }
+@media (hover: hover) {
+  #question-control .mode-memory button:hover::before {
+    color: var(--color-ui-purple);
+  }
+  #question-control .mode-memory button:active {
+    -webkit-transform: translateY(1px);
+            transform: translateY(1px);
+  }
+}
 #question-control .mode-memory button.disabled {
   pointer-events: none;
 }
@@ -1436,8 +1503,7 @@ main {
     background: var(--color-ui-purple);
   }
   #question-control .mode-select ul li:active {
-    -webkit-transform: translateY(1px);
-            transform: translateY(1px);
+    scale: 0.97;
   }
 }
 #question-control .mode-select ul li button {
@@ -1616,6 +1682,46 @@ main {
   margin-right: 12px;
 }
 
+a.rounded {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-inline: auto;
+  margin-top: 16px;
+  border-radius: 9999px;
+}
+
+#result-share {
+  position: relative;
+  width: 240px;
+  height: 48px;
+  font-weight: 600;
+  color: #fff;
+  background: #000;
+  font-size: 14px;
+}
+#result-share::after {
+  position: absolute;
+  inset: 0;
+  display: block;
+  margin: 2px;
+  content: "";
+  border: 2px solid var(--alpha-text-gray-44);
+  border-radius: 9999px;
+}
+#result-share img {
+  width: 16px;
+  height: 16px;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
 #result-closer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1649,6 +1755,13 @@ main {
   }
   100% {
     opacity: 0;
+  }
+}
+@media (hover: hover) {
+  #result-closer:hover {
+    color: var(--color-ui-purple);
+    -webkit-animation: none;
+            animation: none;
   }
 }
 
@@ -1773,9 +1886,18 @@ main {
   width: 48px;
   height: 48px;
   color: var(--color-text-gray);
+  cursor: pointer;
 }
 #result-answer-closer::before {
   font-size: 32px;
+}
+@media (hover: hover) {
+  #result-answer-closer:hover::before {
+    color: var(--color-ui-purple);
+  }
+  #result-answer-closer:active {
+    transfrom: translateY(1px);
+  }
 }
 
 #help-backdrop {
