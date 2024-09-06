@@ -334,7 +334,6 @@ function sessionReset() {
 }
 
 function goHomeScreen() {
-  console.log("home");
   sessionReset();
 
   const settingOuter = document.getElementById("setting-outer");

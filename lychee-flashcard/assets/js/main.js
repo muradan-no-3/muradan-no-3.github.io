@@ -109,7 +109,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   qNext.addEventListener("click", (e) => {
-    console.log("qNext click");
     if (qNext.classList.contains("js-hidePrev")) {
       hidePrevQuestion();
     } else if (qNext.classList.contains("js-showA")) {
@@ -133,7 +132,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   answerCheck.addEventListener("click", () => {
-    console.log("answer check");
     const gm = currentQ.value.split("-");
 
     if (answerCheck.classList.contains("js-removing")) {
@@ -186,8 +184,6 @@ window.addEventListener("DOMContentLoaded", () => {
       e.target.parentNode.id != "sns" &&
       e.target.parentNode.parentNode.id != "sns"
     ) {
-      console.log("showQuestion");
-
       aJudge.classList.remove("correct");
       aJudge.classList.remove("wrong");
       aInput.value = "";
@@ -228,8 +224,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function showAnswer() {
-    console.log("showAnswer");
-
     const currentSession = getSessionData();
 
     if (qmode.value === "select" || qmode.value === "input") {
@@ -242,7 +236,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     shown_member.push(nowShowingMember.id);
     qshown.value = JSON.stringify(shown_member);
-    console.log(shown_member);
 
     if (qmode.value != "memory" || qlist.value != "all") {
       usingList = initializeRandomArray(qlist.value);
@@ -381,7 +374,6 @@ window.addEventListener("DOMContentLoaded", () => {
       currentSession["result"] = [];
     }
 
-    console.log("input:", answer, "answer:", currentMemberId);
     if (answer === currentMemberId) {
       aJudge.classList.remove("wrong");
       aJudge.classList.add("correct");
@@ -418,8 +410,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   answerSend.addEventListener("click", () => {
     const input = answerSend.parentNode.querySelector("input");
-
-    console.log(sanitizeInput(input.value));
 
     const sanitized = sanitizeInput(input.value);
     if (sanitized != "") {
@@ -522,8 +512,6 @@ function initializeRandomArray(list) {
     }
   }
 
-  console.log({ groups: usingGroupList, members: usingMemberList });
-
   return { groups: usingGroupList, members: usingMemberList };
 }
 
@@ -571,8 +559,6 @@ function getDataRandom(usingList, avoidMember = []) {
     }
   });
 
-  console.log(avoidedArray);
-
   const avoidedSize = avoidedArray.length;
   let m = Math.floor(Math.random() * avoidedSize);
 
@@ -602,8 +588,6 @@ function removeMember(group, member, usingList) {
   const usingMemberList = usingList.members;
   const checked_member = JSON.parse(localStorage.getItem("checked_member"));
 
-  console.log("remove", group, member, usingList, usingMemberList[group]);
-
   if (usingMemberList[group]) {
     const m = usingMemberList[group].indexOf(member);
     if (m >= 0) {
@@ -627,8 +611,6 @@ function addMember(group, member, usingList) {
   const usingGroupList = usingList.groups;
   const usingMemberList = usingList.members;
   const checked_member = JSON.parse(localStorage.getItem("checked_member"));
-
-  console.log("add", group, member);
 
   const g = usingGroupList.indexOf(group);
   if (g < 0) {
@@ -746,8 +728,6 @@ function setQuestion(member) {
         button.setAttribute("data-id", member.id);
       } else {
         const fullList = initializeRandomArray("full");
-
-        console.log(fullList, avoid);
 
         const wrongMember = getDataRandom(fullList, avoid);
         button.textContent = wrongMember.name;
@@ -877,8 +857,6 @@ function setResultAnswer(e, member, onResultDisplay) {
     const outer = document.getElementById(onResultDisplay + "answer-outer");
 
     outer.classList.remove("closed");
-
-    console.log(targetTop, scrollTop, window.innerHeight);
 
     if (targetTop < window.innerHeight / 2) {
       outer.style.transform = "translateY(" + Number(scrollTop + targetTop - targetHeight / 2) + "px)";
