@@ -476,6 +476,7 @@ window.addEventListener("DOMContentLoaded", () => {
 /*-----------------*/
 
 function initializeRandomArray(list) {
+  console.log(list);
   const usingGroupList = [];
   const usingMemberList = {};
 
@@ -505,8 +506,8 @@ function initializeRandomArray(list) {
     for (let j = 0; j < data[groups[i]].n; j++) {
       if (list === "full") {
         usingMemberList[groups[i]].push(members[j]);
-      } else if (list === "all" && checked_member.indexOf(members[j]) < 0 && asignedGroups.indexOf(groups[i]) >= 0) {
-        if (mode === "memory") {
+      } else if (list === "all" && asignedGroups.indexOf(groups[i]) >= 0) {
+        if (mode === "memory" && checked_member.indexOf(members[j]) < 0) {
           usingMemberList[groups[i]].push(members[j]);
         } else {
           if (shown_member.indexOf(members[j]) < 0) {
