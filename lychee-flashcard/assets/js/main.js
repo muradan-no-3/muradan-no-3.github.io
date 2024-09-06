@@ -354,7 +354,7 @@ window.addEventListener("DOMContentLoaded", () => {
       aWrapper.classList.remove("active");
 
       const shareElm = document.getElementById("result-share");
-      const modeName = currentSession.mode === "select" ? "4択" : currentSession.mode === "select" ? "入力" : "---";
+      const modeName = currentSession.mode === "select" ? "4択" : currentSession.mode === "input" ? "入力" : "---";
       const settingName =
         currentSession.setting === "artist_photo"
           ? "アー写"
