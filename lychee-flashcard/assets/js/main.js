@@ -366,7 +366,7 @@ window.addEventListener("DOMContentLoaded", () => {
           ? "キャッチコピー"
           : "---";
       const resultHref =
-        "https://x.com/intent/post?text=■━━━━━━━━━━━□%0A%20┃%20サークルライチ記憶帖%20┃%0A□━━━━━━━━━━━■%0A%0A【" +
+        "https://x.com/intent/tweet?text=■━━━━━━━━━━━□%0A%20┃%20サークルライチ記憶帖%20┃%0A□━━━━━━━━━━━■%0A%0A【" +
         modeName +
         "モード】（" +
         settingName +
