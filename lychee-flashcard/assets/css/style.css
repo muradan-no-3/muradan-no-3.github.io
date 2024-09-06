@@ -1000,6 +1000,7 @@ main {
 #result-answer-image img,
 #answer-image img,
 #question-image img {
+  pointer-events: none;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
