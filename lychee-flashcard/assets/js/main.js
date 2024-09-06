@@ -691,15 +691,26 @@ function setQuestion(member) {
   }
 
   if (document.getElementById("setting-artist_photo").checked) {
+    qImgElm.classList.add("js-img-loading");
     qImgElm.querySelector("img").setAttribute("src", member.visual);
+    qImgElm.querySelector("img").onload = () => {
+      qImgElm.classList.remove("js-img-loading");
+    };
     qTextElm.classList.remove("active");
   } else if (document.getElementById("setting-other_photo").checked) {
     if (member.images.length > 0) {
       const random_i = Math.floor(Math.random() * member.images.length);
-
+      qImgElm.classList.add("js-img-loading");
       qImgElm.querySelector("img").setAttribute("src", imagePath + member.id + "/" + member.images[random_i]);
+      qImgElm.querySelector("img").onload = () => {
+        qImgElm.classList.remove("js-img-loading");
+      };
     } else {
+      qImgElm.classList.add("js-img-loading");
       qImgElm.querySelector("img").setAttribute("src", member.visual);
+      qImgElm.querySelector("img").onload = () => {
+        qImgElm.classList.remove("js-img-loading");
+      };
     }
     qTextElm.classList.remove("active");
   } else {
@@ -781,7 +792,11 @@ function setAnswer(member, onResultDisplay = "") {
     answerMark.classList.remove("js-removing");
   }
 
+  aImgElm.classList.add("js-img-loading");
   aImgElm.querySelector("img").setAttribute("src", member.visual);
+  aImgElm.querySelector("img").onload = () => {
+    aImgElm.classList.remove("js-img-loading");
+  };
 
   const span = document.createElement("span");
 
