@@ -59,6 +59,10 @@ body {
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
   content: "\e88a";
 }
+.icon.map-pin::before {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  content: "\e0c8";
+}
 .icon.help::before {
   content: "\e887";
 }
@@ -1211,13 +1215,13 @@ main {
   border: none;
 }
 #question-text.copy p {
+  max-width: 100%;
   font-family: "Zen Old Mincho", serif;
   font-size: 24px;
   font-style: oblique;
   color: var(--color-ui-purple);
   text-align: center;
   word-break: auto-phrase;
-  max-width: 100%;
 }
 
 #question-title,
