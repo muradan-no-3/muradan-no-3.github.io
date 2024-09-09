@@ -1,4 +1,49 @@
 /* CSS Document */
+a.home {
+  position: fixed;
+  z-index: 99;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--color-ui-purple);
+  background: var(--alpha-bg-black);
+  border-radius: 4px;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  scale: 1;
+  translate: 0px 16px;
+}
+a.home.onmoving {
+  opacity: 0;
+}
+a.home::before {
+  font-size: 32px;
+}
+@media (hover: hover) and (hover: hover) {
+  a.home {
+    -webkit-transition: scale 0.1s ease;
+    transition: scale 0.1s ease;
+  }
+  a.home:hover {
+    scale: 1.1;
+  }
+  a.home:active {
+    opacity: 0.8;
+    scale: 1;
+  }
+}
+
 #members-list-wrapper {
   width: -webkit-fit-content;
   width: -moz-fit-content;

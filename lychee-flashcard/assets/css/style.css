@@ -102,6 +102,9 @@ body {
 .icon.profile::before {
   content: "\e851";
 }
+.icon.profile-card::before {
+  content: "\f4ca";
+}
 .icon.photo::before {
   content: "\e3f4";
 }
@@ -524,7 +527,9 @@ header nav > ul > li > ul {
   margin-top: 16px;
 }
 #setting-outer nav > ul > li > ul li > button,
-header nav > ul > li > ul li > button {
+#setting-outer nav > ul > li > ul li > a.button,
+header nav > ul > li > ul li > button,
+header nav > ul > li > ul li > a.button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,6 +541,7 @@ header nav > ul > li > ul li > button {
           justify-content: center;
   width: 280px;
   height: 48px;
+  margin-top: 0;
   color: var(--color-ui-purple);
   border: 2px solid var(--color-ui-purple);
   border-radius: 9999px;
@@ -543,17 +549,23 @@ header nav > ul > li > ul li > button {
   transition: background-color 0.1s linear, color 0.1s linear;
 }
 #setting-outer nav > ul > li > ul li > button::before,
-header nav > ul > li > ul li > button::before {
+#setting-outer nav > ul > li > ul li > a.button::before,
+header nav > ul > li > ul li > button::before,
+header nav > ul > li > ul li > a.button::before {
   margin-right: 4px;
 }
 @media (hover: hover) {
   #setting-outer nav > ul > li > ul li > button:hover,
-  header nav > ul > li > ul li > button:hover {
+  #setting-outer nav > ul > li > ul li > a.button:hover,
+  header nav > ul > li > ul li > button:hover,
+  header nav > ul > li > ul li > a.button:hover {
     color: var(--color-text-gray);
     background: var(--color-ui-purple);
   }
   #setting-outer nav > ul > li > ul li > button:active,
-  header nav > ul > li > ul li > button:active {
+  #setting-outer nav > ul > li > ul li > a.button:active,
+  header nav > ul > li > ul li > button:active,
+  header nav > ul > li > ul li > a.button:active {
     opacity: 0.8;
     translate: 0 1px;
   }

@@ -136,6 +136,10 @@ body {
     content: "\e851";
   }
 
+  &.profile-card::before {
+    content: "\f4ca";
+  }
+
   &.photo::before {
     content: "\e3f4";
   }
@@ -534,12 +538,14 @@ header {
           align-items: center;
           margin-top: 16px;
 
-          li > button {
+          li > button,
+          li > a.button {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 280px;
             height: 48px;
+            margin-top: 0;
             color: var(--color-ui-purple);
             border: 2px solid var(--color-ui-purple);
             border-radius: 9999px;

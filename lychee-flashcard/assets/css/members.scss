@@ -2,6 +2,47 @@
 
 /* CSS Document */
 
+a.home {
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--color-ui-purple);
+  background: var(--alpha-bg-black);
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  transform-origin: 0 0;
+  scale: 1;
+  translate: 0 16px;
+
+  &.onmoving {
+    opacity: 0;
+  }
+
+  &::before {
+    font-size: 32px;
+  }
+
+  @media (hover: hover) {
+    @media (hover: hover) {
+      transition: scale 0.1s ease;
+
+      &:hover {
+        scale: 1.1;
+      }
+
+      &:active {
+        opacity: 0.8;
+        scale: 1;
+      }
+    }
+  }
+}
+
 #members-list-wrapper {
   width: fit-content;
   padding: 64px;
