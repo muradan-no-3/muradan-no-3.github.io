@@ -9,6 +9,7 @@
   --color-text-gray: #b8b8b2;
   --color-text-darkGray: #8b8b86;
   --color-ui-purple: #ba6de3;
+  --color-light-purple: #d19bee;
   --color-alert-red: #e36d6d;
   --color-correct-blue: #4ca9d4;
   --color-wrong-red: #d35555;
@@ -209,6 +210,59 @@ label:has(input[type="radio"]:checked) {
 
 label:has(input[type="checkbox"]) {
   cursor: pointer;
+}
+
+label:has(input.toggle) {
+  display: inline-block;
+  margin-top: 32px;
+}
+
+input.toggle {
+  position: relative;
+  margin-left: 16px;
+  appearance: none;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    display: block;
+    width: 72px;
+    height: 32px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    content: "";
+    background: var(--color-text-gray);
+    border-radius: 9999px;
+  }
+
+  &:focus::before {
+    box-shadow: var(--material-basic), var(--material-focus-color);
+  }
+
+  &::after {
+    position: absolute;
+    top: -18px;
+    left: 2px;
+    display: block;
+    width: 28px;
+    height: 28px;
+    content: "";
+    background: var(--color-ui-purple);
+    border-radius: 100%;
+    transition: all 0.1s ease;
+  }
+
+  &:checked::before {
+    content: "ON";
+    background: var(--color-light-purple);
+  }
+
+  &:checked::after {
+    left: 40px;
+  }
 }
 
 *[role="button"],
@@ -754,65 +808,65 @@ header:has(#headaer-nav-contoroller:checked) + main {
     padding-left: 32px;
     margin-top: 12px;
   }
+}
 
-  label {
-    font-weight: 600;
+label {
+  font-weight: 600;
 
-    &:has(input[type="checkbox"]) {
-      position: relative;
-      letter-spacing: 0.1em;
+  &:has(input[type="checkbox"]:not(.toggle)) {
+    position: relative;
+    letter-spacing: 0.1em;
 
-      &::before {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-        content: "";
-        border: 2px solid var(--color-ui-purple);
-        border-radius: 2px;
-        transform: translateY(2px);
-      }
+    &::before {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+      content: "";
+      border: 2px solid var(--color-ui-purple);
+      border-radius: 2px;
+      transform: translateY(2px);
+    }
 
-      &::after {
-        position: absolute;
-        left: 0;
-        font-family: "Material Symbols outlined", mono-space;
-        color: #fff;
-        content: "\e5ca";
-        opacity: 0;
-        transition:
-          opacity 0.1s ease,
-          rotate 0.1s ease;
-        rotate: 0deg;
-      }
+    &::after {
+      position: absolute;
+      left: 0;
+      font-family: "Material Symbols outlined", mono-space;
+      color: #fff;
+      content: "\e5ca";
+      opacity: 0;
+      transition:
+        opacity 0.1s ease,
+        rotate 0.1s ease;
+      rotate: 0deg;
+    }
 
-      @media (hover: hover) {
-        transition: opacity 0.1s ease;
+    @media (hover: hover) {
+      transition: opacity 0.1s ease;
 
-        &:hover {
-          opacity: 0.8;
+      &:hover {
+        opacity: 0.8;
 
-          &::before {
-            scale: 1.1;
-          }
+        &::before {
+          scale: 1.1;
+        }
 
-          &::after {
-            opacity: 0.5;
-            rotate: 10deg;
-            scale: 1.1;
-          }
+        &::after {
+          opacity: 0.5;
+          rotate: 10deg;
+          scale: 1.1;
         }
       }
     }
+  }
 
-    &:has(input[type="checkbox"]:checked) {
-      &::before {
-        background: var(--color-ui-purple);
-      }
+  &:has(input[type="checkbox"]:checked) {
+    &::before {
+      background: var(--color-ui-purple);
+    }
 
-      &::after {
-        opacity: 1;
-      }
+    &::after {
+      opacity: 1;
     }
   }
 }

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--STYLE-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+    <link rel="stylesheet" href="./assets/css/style.css?ver=202409091615" />
+    <link rel="stylesheet" href="./assets/css/members.css?ver=202409091615" />
+
+    <!--SCRIPT-->
+    <script src="./assets/js/database.js?ver=202409091615"></script>
+    <script src="./assets/js/fixtarget.js?ver=202409091615"></script>
+    <script src="./assets/js/search.js?ver=202409091615"></script>
+    <!--FONTS-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet" />
+
+    <title>メンバー一覧</title>
+  </head>
+  <body>
+    <a href="./" class="icon home js-fixed-size"></a>
+    <div class="search-form">
+      <form>
+        <div class="search-class">
+          <label><input type="checkbox" name="search-class" class="visually-hidden" value="1" checked />1期生</label
+          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="2" checked />2期生</label
+          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="3" checked />3期生</label
+          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="4" checked />4期生</label>
+        </div>
+        <!-- /.search-class -->
+        <div class="search-color">
+          <label><input type="radio" name="search-color" checked value="all" />指定なし</label
+          ><label><input type="radio" name="search-color" value="赤" />赤</label
+          ><label><input type="radio" name="search-color" value="黄" />黄</label
+          ><label><input type="radio" name="search-color" value="緑" />緑</label
+          ><label><input type="radio" name="search-color" value="水色" />水色</label
+          ><label><input type="radio" name="search-color" value="青" />青</label
+          ><label><input type="radio" name="search-color" value="紫" />紫</label
+          ><label><input type="radio" name="search-color" value="ピンク" />ピンク</label
+          ><label><input type="radio" name="search-color" value="白" />白</label
+          ><label><input type="radio" name="search-color" value="特殊" />特殊</label>
+        </div>
+        <!-- /.search-color -->
+        <div class="search-birthmonth">
+          <label
+            >誕生月
+            <select name="search-birthmonth" id="search-birthmonth">
+              <option value=""></option>
+              <option value="1">1月</option>
+              <option value="2">2月</option>
+              <option value="3">3月</option>
+              <option value="4">4月</option>
+              <option value="5">5月</option>
+              <option value="6">6月</option>
+              <option value="7">7月</option>
+              <option value="8">8月</option>
+              <option value="9">9月</option>
+              <option value="10">10月</option>
+              <option value="11">11月</option>
+              <option value="12">12月</option></select
+            ><!-- /# -->
+          </label>
+          <label>誕生日順ソート<input type="checkbox" name="" class="toggle" id="sort-by-birthday" /></label>
+        </div>
+        <!-- /.search-birthmonth -->
+        <div class="search-id">
+          <label>ID<input type="text" id="search-id" /></label>
+        </div>
+        <!-- /.search-id -->
+        <div class="search-setting">
+          <label>詳細表示<input type="checkbox" name="setting" class="toggle" checked id="setting-detail" /></label>
+        </div>
+        <!-- /.search-setting -->
+        <button type="button" id="js-search-action" class="icon search">検索</button>
+      </form>
+    </div>
+    <!-- /.search-form -->
+
+    <div id="members-list-wrapper">
+      <div class="members-wrapper search-result"></div>
+      <!-- /.members-outer -->
+    </div>
+    <!-- /#members-list-wrapper -->
+  </body>
+</html>

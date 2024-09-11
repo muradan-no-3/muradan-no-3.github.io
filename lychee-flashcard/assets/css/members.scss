@@ -17,7 +17,7 @@ a.home {
   transition: opacity 0.3s ease;
   transform-origin: 0 0;
   scale: 1;
-  translate: 0 16px;
+  translate: 4px 16px;
 
   &.onmoving {
     opacity: 0;
@@ -163,6 +163,8 @@ a.home {
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
+  justify-content: space-between;
+  width: 200px;
 }
 
 .member-img {
@@ -306,9 +308,113 @@ a.home {
   margin-top: 16px;
 }
 
+.search-form {
+  padding: 128px 32px 0;
+}
+
+form {
+  width: fit-content;
+  padding: 16px 32px;
+  border: 1px solid var(--color-text-darkGray);
+  border-radius: 16px;
+
+  button {
+    position: relative;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 36px;
+    margin-top: 16px;
+    margin-left: auto;
+    text-align: center;
+    border: 2px solid var(--color-ui-purple);
+
+    @media (hover: hover) {
+      &:hover {
+        color: #fff;
+        background: var(--color-ui-purple);
+      }
+    }
+  }
+
+  select,
+  input[type="text"] {
+    width: 240px;
+    height: 36px;
+    padding: 0 16px;
+    border: 2px solid var(--color-ui-purple);
+    border-radius: 100vmax;
+  }
+
+  label:has(select),
+  label:has(input[type="text"]) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+    margin-top: 16px;
+  }
+}
+
 .member-sns {
   position: absolute;
   right: 4px;
   bottom: 4px;
   justify-content: flex-end;
+}
+
+.search-class,
+.search-color {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.search-birthmonth {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+
+  label,
+  label:has(.toggle) {
+    margin-top: 0;
+  }
+}
+
+.search-result {
+  flex-wrap: wrap;
+  row-gap: 64px;
+
+  .member-outer {
+    opacity: 0;
+    animation: slideUp 0.5s ease;
+
+    &.active {
+      opacity: 1;
+    }
+
+    @for $i from 0 through 55 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: $i * 0.1s;
+      }
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        translate: 0 48px;
+      }
+
+      100% {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+  }
 }
