@@ -507,7 +507,7 @@ const data = {
         copy: "『天国まであと少しだよ』",
         birthday: "4/5",
         xid: "haku3_",
-        xsub: "loxo_sub",
+        xsub: "fuyuu3_",
         ig: "furokirai_",
         tiktok: "furokirai",
         visual: "./assets/img/haku.jpeg",
