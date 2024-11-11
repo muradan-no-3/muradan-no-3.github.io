@@ -192,7 +192,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
-        button.disabled = true;
         const mode = button.getAttribute("data-mode");
         const list = button.getAttribute("data-list");
         const setting = qsetting.value;
@@ -229,7 +228,6 @@ window.addEventListener("DOMContentLoaded", () => {
           startSession(mode, list, setting);
         }
       });
-      button.disabled = false;
     });
   });
 
