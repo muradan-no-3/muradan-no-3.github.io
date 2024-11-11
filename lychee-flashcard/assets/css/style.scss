@@ -130,6 +130,10 @@ body {
     content: "\f4ca";
   }
 
+  &.search::before {
+    content: "\e8b6";
+  }
+
   &.photo::before {
     content: "\e3f4";
   }

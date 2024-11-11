@@ -106,6 +106,9 @@ body {
 .icon.profile-card::before {
   content: "\f4ca";
 }
+.icon.search::before {
+  content: "\e8b6";
+}
 .icon.photo::before {
   content: "\e3f4";
 }
