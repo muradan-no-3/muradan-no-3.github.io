@@ -179,6 +179,7 @@ label:has(input[type=checkbox]) {
 label:has(input.toggle) {
   display: inline-block;
   margin-top: 32px;
+  margin-right: 72px;
 }
 
 input.toggle {
@@ -237,6 +238,10 @@ button {
   pointer-events: none;
   cursor: default;
   opacity: 0.3;
+}
+
+.invisible {
+  display: none;
 }
 
 .tap-click::before {
@@ -642,7 +647,7 @@ header nav {
   -webkit-transition: width 0.3s ease, opacity 0.3s ease;
   transition: width 0.3s ease, opacity 0.3s ease;
 }
-header #headaer-nav-contoroller:checked + nav {
+header #header-nav-contoroller:checked + nav {
   width: 100%;
   height: 100vh;
   padding: 80px 16px 32px;
@@ -650,7 +655,7 @@ header #headaer-nav-contoroller:checked + nav {
   opacity: 1;
 }
 
-header:has(#headaer-nav-contoroller:checked) + main {
+header:has(#header-nav-contoroller:checked) + main {
   height: 80vh;
   overflow: hidden;
 }
@@ -1990,7 +1995,7 @@ a.rounded {
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }
-#alert-wrapper.yn #alert-controller {
+#alert-wrapper.gohome #alert-controller, #alert-wrapper.yn #alert-controller {
   bottom: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2002,13 +2007,10 @@ a.rounded {
       -ms-flex-pack: center;
           justify-content: center;
 }
-#alert-wrapper.yn #alert-controller .close:not(.button) {
+#alert-wrapper.gohome #alert-controller .close:not(.button), #alert-wrapper.yn #alert-controller .close:not(.button) {
   display: none;
 }
-#alert-wrapper.yn #alert-controller .button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#alert-wrapper.gohome #alert-controller .button, #alert-wrapper.yn #alert-controller .button {
   gap: 4px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -2022,19 +2024,31 @@ a.rounded {
   border: 1px solid var(--color-text-gray);
   border-radius: 4px;
 }
-#alert-wrapper.yn #alert-controller .button.home {
+#alert-wrapper.gohome #alert-controller .button.home, #alert-wrapper.gohome #alert-controller .button.ok, #alert-wrapper.yn #alert-controller .button.home, #alert-wrapper.yn #alert-controller .button.ok {
   color: var(--color-bg-black);
   background: var(--color-ui-purple);
   border-color: var(--color-ui-purple);
 }
 @media (hover: hover) {
-  #alert-wrapper.yn #alert-controller .button:hover {
+  #alert-wrapper.gohome #alert-controller .button:hover, #alert-wrapper.yn #alert-controller .button:hover {
     opacity: 0.8;
   }
-  #alert-wrapper.yn #alert-controller .button:active {
+  #alert-wrapper.gohome #alert-controller .button:active, #alert-wrapper.yn #alert-controller .button:active {
     opacity: 0.8;
     translate: 0 1px;
   }
+}
+#alert-wrapper.gohome .button.home,
+#alert-wrapper.gohome .button.close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#alert-wrapper.yn .button.ok,
+#alert-wrapper.yn .button.close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 #alert-wrapper #alert-help {
   display: none;

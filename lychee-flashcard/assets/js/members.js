@@ -7,7 +7,11 @@ window.addEventListener("DOMContentLoaded", () => {
     { key: "xid", url: "https://x.com/", icon: "xsns-icon.svg" },
     { key: "ig", url: "https://instagram.com/", icon: "ig-icon.svg" },
     { key: "tiktok", url: "https://tiktok.com/@", icon: "tiktok-icon.svg" },
-    { key: "timetree", url: "https://timetreeapp.com/public_calendars/", icon: "timetree-icon.svg" },
+    {
+      key: "timetree",
+      url: "https://timetreeapp.com/public_calendars/",
+      icon: "timetree-icon.svg",
+    },
     { key: "youtube", url: "https://youtube.com/@", icon: "youtube-icon.svg" },
   ];
 
@@ -20,7 +24,12 @@ window.addEventListener("DOMContentLoaded", () => {
     groupWrapper.classList.add("group-wrapper");
     membersWrapper.classList.add("members-wrapper");
 
-    groupNameElm.textContent = data[group].symbols[0] + " " + data[group].name + " " + data[group].symbols[1];
+    groupNameElm.textContent =
+      data[group].symbols[0] +
+      " " +
+      data[group].name +
+      " " +
+      data[group].symbols[1];
     groupNameElm.classList.add("group-title");
 
     const debutElm = document.createElement("span");
@@ -77,7 +86,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const memberImgElm = document.createElement("div");
       memberImgElm.classList.add("member-img");
-      const colorcode = COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
+      const colorcode =
+        COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
       memberImgElm.style.borderColor = colorcode;
 
       const memberColorElm = document.createElement("span");
@@ -91,10 +101,14 @@ window.addEventListener("DOMContentLoaded", () => {
         memberColorElm.style.color = "#000000";
       }
 
-      if (member.join) {
+      if (member.join || member.graduated) {
         const memberJoinElm = document.createElement("div");
         memberJoinElm.classList.add("member-join");
-        memberJoinElm.innerHTML = member.join.replace("（", "<br>（") + "〜";
+        memberJoinElm.innerHTML =
+          (member.join ? member.join.replace("（", "<br>（") : "") +
+          (member.join && member.graduated ? "<br>" : "") +
+          "〜" +
+          (member.graduated ? member.graduated.replace("（", "<br>（") : "");
         memberJoinElm.style.backgroundColor = colorcode;
         memberImgElm.appendChild(memberJoinElm);
 
@@ -106,7 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       const memberImg = document.createElement("img");
-      memberImg.setAttribute("src", member.visual);
+      memberImg.setAttribute("src", member.visual + "?ver=" + updated);
 
       memberImgElm.appendChild(memberImg);
       memberOuter.appendChild(memberImgElm);
@@ -153,6 +167,12 @@ window.addEventListener("DOMContentLoaded", () => {
         { key: "xsub", url: "https://x.com/", icon: "xsub-icon.svg" },
         { key: "ig", url: "https://instagram.com/", icon: "ig-icon.svg" },
         { key: "tiktok", url: "https://tiktok.com/@", icon: "tiktok-icon.svg" },
+        {
+          key: "youtube",
+          url: "https://www.youtube.com/@",
+          icon: "youtube-icon.svg",
+          optional: true,
+        },
       ];
 
       SNSs.forEach((sns) => {
@@ -172,11 +192,17 @@ window.addEventListener("DOMContentLoaded", () => {
           aSnsElm.href = "";
           aSnsElm.classList.add("disabled");
         }
-        snsListElm.appendChild(snsElm);
+        if (!sns.optional || (sns.optional && member[sns.key])) {
+          snsListElm.appendChild(snsElm);
+        }
       });
       memberDetail.appendChild(snsListElm);
 
       memberOuter.appendChild(memberDetail);
+
+      if (!member.isActive) {
+        memberOuter.classList.add("ex-member");
+      }
 
       membersWrapper.appendChild(memberOuter);
     });

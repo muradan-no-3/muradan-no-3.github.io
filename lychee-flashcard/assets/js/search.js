@@ -1,6 +1,51 @@
 window.addEventListener("DOMContentLoaded", () => {
   const action = document.getElementById("js-search-action");
+  const idSearch = document.getElementById("idsearch-list");
+  const checkAll = document.getElementById("idsearch-checkAll");
 
+  Object.keys(data).forEach((groupid) => {
+    const groupOuter = document.createElement("div");
+    const ul = document.createElement("ul");
+    const checkAllLabel = document.createElement("label");
+    const checkAllInput = document.createElement("input");
+
+    const group = data[groupid];
+
+    groupOuter.classList.add("idSearch-group-outer");
+
+    checkAllInput.setAttribute("type", "checkbox");
+    checkAllInput.setAttribute("value", groupid);
+    checkAllInput.classList.add("visually-hidden");
+
+    checkAllInput.setAttribute("onchange", "toggleAll(event)");
+
+    checkAllLabel.appendChild(checkAllInput);
+    checkAllLabel.innerHTML += group.name;
+    groupOuter.appendChild(checkAllLabel);
+
+    Object.keys(group.members).forEach((memberid) => {
+      const li = document.createElement("li");
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+
+      input.setAttribute("type", "checkbox");
+      input.setAttribute("value", memberid);
+      input.setAttribute("onchange", "setSearchID()");
+      input.classList.add("visually-hidden");
+
+      label.appendChild(input);
+      label.innerHTML += group.members[memberid].name;
+
+      li.appendChild(label);
+      ul.appendChild(li);
+    });
+    groupOuter.appendChild(ul);
+    idSearch.appendChild(groupOuter);
+  });
+
+  checkAll.addEventListener("change", (e) => {
+    toggleAll(e);
+  });
   action.addEventListener("click", () => {
     displaySearchResult();
   });
@@ -9,7 +54,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const sortToggle = document.getElementById("sort-by-birthday");
 
   inputBirthMonth.addEventListener("change", () => {
-    console.log(inputBirthMonth.value);
     if (inputBirthMonth.value != "") {
       sortToggle.checked = true;
     }
@@ -17,10 +61,13 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function displaySearchResult() {
-  const wrapper = document.getElementById("members-list-wrapper").querySelector(".members-wrapper");
+  const wrapper = document
+    .getElementById("members-list-wrapper")
+    .querySelector(".members-wrapper");
   wrapper.innerHTML = "";
 
   const isShowDetail = document.getElementById("setting-detail").checked;
+  const isShowExMember = document.getElementById("setting-exmember").checked;
 
   const inputClasses = document.querySelectorAll("input[name='search-class']");
   const classes = [];
@@ -55,7 +102,8 @@ function displaySearchResult() {
     const group = data[groupid];
     Object.keys(group.members).forEach((memberid) => {
       const birthArray = group.members[memberid].birthday.split("/");
-      group.members[memberid]["birthkey"] = birthArray[0].padStart(2, "0") + birthArray[1].padStart(2, "0");
+      group.members[memberid]["birthkey"] =
+        birthArray[0].padStart(2, "0") + birthArray[1].padStart(2, "0");
 
       group.members[memberid]["class"] = group.class;
 
@@ -70,20 +118,23 @@ function displaySearchResult() {
         const member = group.members[memberid];
         const birthMonth = member.birthday.split("/")[0];
         const IDs = inputID.split(",");
-        if (
-          classes.indexOf(group.class) >= 0 &&
-          (colors.length === 0 || colors.indexOf(member.color) >= 0 || colors.indexOf(member.colorName) >= 0) &&
-          (inputBirthMonth.value === "" || inputBirthMonth.value === birthMonth)
-        ) {
-          if (inputID === "") {
-            addMember(member.id, isShowDetail);
-          } else {
-            IDs.forEach((id) => {
-              if (member.id === id) {
-                addMember(member.id, isShowDetail);
-              }
-            });
+        if (inputID === "") {
+          if (
+            classes.indexOf(group.class) >= 0 &&
+            (colors.length === 0 ||
+              colors.indexOf(member.color) >= 0 ||
+              colors.indexOf(member.colorName) >= 0) &&
+            (inputBirthMonth.value === "" ||
+              inputBirthMonth.value === birthMonth)
+          ) {
+            addMember(member.id, isShowDetail, isShowExMember);
           }
+        } else {
+          IDs.forEach((id) => {
+            if (member.id === id) {
+              addMember(member.id, isShowDetail, isShowExMember);
+            }
+          });
         }
       });
     });
@@ -91,19 +142,32 @@ function displaySearchResult() {
     const sortedByMonth = objectQuickSort(members, "birthkey");
     sortedByMonth.forEach((member) => {
       const birthMonth = member.birthday.split("/")[0];
-      if (
-        classes.indexOf(member.class) >= 0 &&
-        (colors.length === 0 || colors.indexOf(member.color) >= 0 || colors.indexOf(member.colorName) >= 0) &&
-        (inputBirthMonth.value === "" || inputBirthMonth.value === birthMonth)
-      ) {
-        addMember(member.id, isShowDetail);
+      const IDs = inputID.split(",");
+      if (inputID === "") {
+        if (
+          classes.indexOf(member.class) >= 0 &&
+          (colors.length === 0 ||
+            colors.indexOf(member.color) >= 0 ||
+            colors.indexOf(member.colorName) >= 0) &&
+          (inputBirthMonth.value === "" || inputBirthMonth.value === birthMonth)
+        ) {
+          addMember(member.id, isShowDetail, isShowExMember);
+        }
+      } else {
+        IDs.forEach((id) => {
+          if (member.id === id) {
+            addMember(member.id, isShowDetail, isShowExMember);
+          }
+        });
       }
     });
   }
 }
 
-function addMember(id, isShowDetail = true) {
-  const wrapper = document.getElementById("members-list-wrapper").querySelector(".members-wrapper");
+function addMember(id, isShowDetail = true, isShowExMember = true) {
+  const wrapper = document
+    .getElementById("members-list-wrapper")
+    .querySelector(".members-wrapper");
 
   let memberid = "";
   let groupid = "";
@@ -125,7 +189,8 @@ function addMember(id, isShowDetail = true) {
 
     const memberImgElm = document.createElement("div");
     memberImgElm.classList.add("member-img");
-    const colorcode = COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
+    const colorcode =
+      COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
     memberImgElm.style.borderColor = colorcode;
 
     const memberColorElm = document.createElement("span");
@@ -139,10 +204,14 @@ function addMember(id, isShowDetail = true) {
       memberColorElm.style.color = "#000000";
     }
 
-    if (member.join) {
+    if (member.join || member.graduated) {
       const memberJoinElm = document.createElement("div");
       memberJoinElm.classList.add("member-join");
-      memberJoinElm.innerHTML = member.join.replace("（", "<br>（") + "〜";
+      memberJoinElm.innerHTML =
+        (member.join ? member.join.replace("（", "<br>（") : "") +
+        (member.join && member.graduated ? "<br>" : "") +
+        "〜" +
+        (member.graduated ? member.graduated.replace("（", "<br>（") : "");
       memberJoinElm.style.backgroundColor = colorcode;
       memberImgElm.appendChild(memberJoinElm);
 
@@ -154,7 +223,7 @@ function addMember(id, isShowDetail = true) {
     }
 
     const memberImg = document.createElement("img");
-    memberImg.setAttribute("src", member.visual);
+    memberImg.setAttribute("src", member.visual + "?ver=" + updated);
 
     memberImgElm.appendChild(memberImg);
     memberOuter.appendChild(memberImgElm);
@@ -227,11 +296,16 @@ function addMember(id, isShowDetail = true) {
       memberOuter.appendChild(memberDetail);
     }
 
+    if (!member.isActive) {
+      memberOuter.classList.add("ex-member");
+    }
+
     memberOuter.addEventListener("animationend", () => {
       memberOuter.classList.add("active");
     });
 
-    wrapper.appendChild(memberOuter);
+    if (isShowExMember || (!isShowExMember && member.isActive))
+      wrapper.appendChild(memberOuter);
   }
 }
 
@@ -246,10 +320,61 @@ function objectQuickSort(data, key, DESCENDING = false) {
   if (DESCENDING) {
     const left = data.filter((row) => row[key] > pivot[key]);
     const right = data.filter((row) => row[key] < pivot[key]);
-    return [...objectQuickSort(left, key, true), ...middle, ...objectQuickSort(right, key, true)];
+    return [
+      ...objectQuickSort(left, key, true),
+      ...middle,
+      ...objectQuickSort(right, key, true),
+    ];
   } else {
     const left = data.filter((row) => row[key] < pivot[key]);
     const right = data.filter((row) => row[key] > pivot[key]);
-    return [...objectQuickSort(left, key), ...middle, ...objectQuickSort(right, key)];
+    return [
+      ...objectQuickSort(left, key),
+      ...middle,
+      ...objectQuickSort(right, key),
+    ];
   }
+}
+
+function toggleAll(e) {
+  target = e.target.parentNode;
+
+  const checkboxes = target.nextElementSibling.querySelectorAll(
+    "input[type='checkbox']"
+  );
+
+  const checkAll = target.querySelector("input[type='checkbox']");
+
+  checkboxes.forEach((ipt) => {
+    if (checkAll.checked) {
+      ipt.checked = true;
+    } else {
+      ipt.checked = false;
+    }
+
+    ipt.dispatchEvent(new Event("change"));
+  });
+}
+
+function setSearchID() {
+  const target = document.getElementById("search-id");
+  const h3 = document.getElementById("idsearch-h3");
+  let result = "";
+  const checkboxList = document
+    .getElementById("idsearch-list")
+    .querySelectorAll("ul");
+
+  h3.classList.remove("active");
+  checkboxList.forEach((ul) => {
+    const checkboxes = ul.querySelectorAll("input[type='checkbox']");
+
+    checkboxes.forEach((ipt) => {
+      if (ipt.checked) {
+        result += ipt.value + ",";
+        h3.classList.add("active");
+      }
+    });
+  });
+
+  target.value = result;
 }

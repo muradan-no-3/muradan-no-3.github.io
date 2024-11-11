@@ -4,6 +4,10 @@ document.addEventListener("contextmenu", function (e) {
   }
 });
 
+window.addEventListener("pageshow", () => {
+  document.getElementById("header-nav-contoroller").checked = false;
+});
+
 window.addEventListener("DOMContentLoaded", () => {
   /*----get elements---*/
 
@@ -27,8 +31,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const currentQ = document.getElementById("currentQ");
   const nextQ = document.getElementById("nextQ");
 
-  const answerStatus = document.getElementById("answer-status").querySelector("span");
-  const questionStatus = document.getElementById("question-status").querySelector("span");
+  const answerStatus = document
+    .getElementById("answer-status")
+    .querySelector("span");
+  const questionStatus = document
+    .getElementById("question-status")
+    .querySelector("span");
 
   const qPrev = document.getElementById("question-prev");
   const qNext = document.getElementById("question-next");
@@ -40,7 +48,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const qlist = document.getElementById("q-list");
   const qsetting = document.getElementById("q-setting");
 
-  const aInput = document.getElementById("question-control").querySelector(".mode-input").querySelector("input");
+  const aInput = document
+    .getElementById("question-control")
+    .querySelector(".mode-input")
+    .querySelector("input");
 
   const raCloser = document.getElementById("result-answer-closer");
 
@@ -107,7 +118,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   aOuter.addEventListener("click", (e) => {
     const currentSession = getSessionData();
-    if (currentSession.questioned === currentSession.questioning) {
+    if (
+      currentSession.list != "all" &&
+      currentSession.questioned === currentSession.questioning
+    ) {
       showResult();
     } else {
       showQuestion(e);
@@ -201,16 +215,28 @@ window.addEventListener("DOMContentLoaded", () => {
       setSessionData(currentSession);
 
       if (qlist.value === "all" && qmode.value === "memory") {
-        setDisplayParameters(currentSession.questioned, "∞", qsetting.value, qlist.value);
+        setDisplayParameters(
+          currentSession.questioned,
+          "∞",
+          qsetting.value,
+          qlist.value
+        );
       } else {
-        setDisplayParameters(currentSession.questioned, currentSession.questioning, qsetting.value, qlist.value);
+        setDisplayParameters(
+          currentSession.questioned,
+          currentSession.questioning,
+          qsetting.value,
+          qlist.value
+        );
       }
 
       if (qmode.value === "select" || qmode.value === "input") {
         questionControl.setAttribute("data-phase", "question");
       }
       if (qmode.value === "input") {
-        const targetInput = questionControl.querySelector(".mode-input").querySelector("input");
+        const targetInput = questionControl
+          .querySelector(".mode-input")
+          .querySelector("input");
         targetInput.focus();
       }
 
@@ -270,7 +296,10 @@ window.addEventListener("DOMContentLoaded", () => {
       setQuestion(newQ);
     }, 500);
 
-    if ((qlist.value != "all" || qmode.value != "memory") && currentSession.questioned === currentSession.questioning) {
+    if (
+      (qlist.value != "all" || qmode.value != "memory") &&
+      currentSession.questioned === currentSession.questioning
+    ) {
       qNext.classList.remove("js-showA");
       qNext.classList.add("js-showResult");
       qPrev.classList.add("disabled");
@@ -306,7 +335,9 @@ window.addEventListener("DOMContentLoaded", () => {
   function showResult() {
     const currentSession = getSessionData();
 
-    const questions = document.getElementById("result-questions").querySelector("tbody");
+    const questions = document
+      .getElementById("result-questions")
+      .querySelector("tbody");
     const judgeElm = document.getElementById("display-judge");
 
     helpButton.classList.add("disabled");
@@ -338,14 +369,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
         tr.setAttribute(
           "onclick",
-          'setResultAnswer(event,data["' + Q.group + '"].members["' + Q.member + '"], "result-")',
+          'setResultAnswer(event,data["' +
+            Q.group +
+            '"].members["' +
+            Q.member +
+            '"], "result-")'
         );
 
         questions.appendChild(tr);
       });
     }
 
-    const scoreElms = document.getElementById("result-score").querySelectorAll("span");
+    const scoreElms = document
+      .getElementById("result-score")
+      .querySelectorAll("span");
     scoreElms[0].textContent = currentSession.correct ?? 0;
     scoreElms[1].textContent = "/" + currentSession.questioning;
 
@@ -354,7 +391,12 @@ window.addEventListener("DOMContentLoaded", () => {
       aWrapper.classList.remove("active");
 
       const shareElm = document.getElementById("result-share");
-      const modeName = currentSession.mode === "select" ? "4択" : currentSession.mode === "input" ? "入力" : "---";
+      const modeName =
+        currentSession.mode === "select"
+          ? "4択"
+          : currentSession.mode === "input"
+          ? "入力"
+          : "---";
       const settingName =
         currentSession.setting === "artist_photo"
           ? "アー写"
@@ -383,7 +425,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   /* select mode */
   const questionControl = document.getElementById("question-control");
-  const answerSelectButtons = questionControl.querySelector(".mode-select").querySelectorAll("button");
+  const answerSelectButtons = questionControl
+    .querySelector(".mode-select")
+    .querySelectorAll("button");
 
   answerSelectButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -417,7 +461,11 @@ window.addEventListener("DOMContentLoaded", () => {
         currentSession["correct"] += 1;
       }
 
-      currentSession["result"].push({ group: currentGroupId, member: currentMemberId, correct: true });
+      currentSession["result"].push({
+        group: currentGroupId,
+        member: currentMemberId,
+        correct: true,
+      });
     } else {
       aJudge.classList.remove("correct");
       aJudge.classList.add("wrong");
@@ -429,7 +477,11 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         currentSession["wrong"] += 1;
       }
-      currentSession["result"].push({ group: currentGroupId, member: currentMemberId, correct: false });
+      currentSession["result"].push({
+        group: currentGroupId,
+        member: currentMemberId,
+        correct: false,
+      });
     }
 
     setSessionData(currentSession);
@@ -488,7 +540,9 @@ function initializeRandomArray(list) {
 
   const qshown = document.getElementById("q-shown");
 
-  const groupChecks = document.getElementById("setting-checkboxes").querySelectorAll("input[name='setting-group']");
+  const groupChecks = document
+    .getElementById("setting-checkboxes")
+    .querySelectorAll("input[name='setting-group']");
   const asignedGroups = [];
   groupChecks.forEach((group) => {
     if (group.checked) {
@@ -504,34 +558,39 @@ function initializeRandomArray(list) {
 
     const members = Object.keys(data[groups[i]].members);
     for (let j = 0; j < data[groups[i]].n; j++) {
-      if (list === "full") {
-        usingMemberList[groups[i]].push(members[j]);
-      } else if (list === "all" && asignedGroups.indexOf(groups[i]) >= 0) {
-        if (mode === "memory" && checked_member.indexOf(members[j]) < 0) {
+      if (data[groups[i]].members[members[j]].isActive) {
+        if (list === "full") {
           usingMemberList[groups[i]].push(members[j]);
-        } else {
-          if (shown_member.indexOf(members[j]) < 0) {
+        } else if (list === "all" && asignedGroups.indexOf(groups[i]) >= 0) {
+          if (mode === "memory" && checked_member.indexOf(members[j]) < 0) {
+            usingMemberList[groups[i]].push(members[j]);
+          } else {
+            if (shown_member.indexOf(members[j]) < 0) {
+              usingMemberList[groups[i]].push(members[j]);
+            }
+          }
+        } else if (list === "random10") {
+          if (
+            shown_member.indexOf(members[j]) < 0 &&
+            asignedGroups.indexOf(groups[i]) >= 0
+          ) {
             usingMemberList[groups[i]].push(members[j]);
           }
-        }
-      } else if (list === "random10") {
-        if (shown_member.indexOf(members[j]) < 0 && asignedGroups.indexOf(groups[i]) >= 0) {
+        } else if (
+          list === "checked" &&
+          checked_member.indexOf(members[j]) >= 0 &&
+          shown_member.indexOf(members[j]) < 0 &&
+          asignedGroups.indexOf(groups[i]) >= 0
+        ) {
+          usingMemberList[groups[i]].push(members[j]);
+        } else if (
+          list === "marked" &&
+          marked_member.indexOf(members[j]) >= 0 &&
+          shown_member.indexOf(members[j]) < 0 &&
+          asignedGroups.indexOf(groups[i]) >= 0
+        ) {
           usingMemberList[groups[i]].push(members[j]);
         }
-      } else if (
-        list === "checked" &&
-        checked_member.indexOf(members[j]) >= 0 &&
-        shown_member.indexOf(members[j]) < 0 &&
-        asignedGroups.indexOf(groups[i]) >= 0
-      ) {
-        usingMemberList[groups[i]].push(members[j]);
-      } else if (
-        list === "marked" &&
-        marked_member.indexOf(members[j]) >= 0 &&
-        shown_member.indexOf(members[j]) < 0 &&
-        asignedGroups.indexOf(groups[i]) >= 0
-      ) {
-        usingMemberList[groups[i]].push(members[j]);
       }
     }
   }
@@ -568,7 +627,11 @@ function getDataRandom(usingList, avoidMember = []) {
 
   const qNext = document.getElementById("question-next");
 
-  if (!usingGroupList || !usingMemberList || sessionData.usingListSizeOnStart.m === 0) {
+  if (
+    !usingGroupList ||
+    !usingMemberList ||
+    sessionData.usingListSizeOnStart.m === 0
+  ) {
     showAlert("表示するメンバー情報がありません。", "error", true);
     return null_member;
   }
@@ -576,7 +639,10 @@ function getDataRandom(usingList, avoidMember = []) {
   const listArray = listToOneArray(usingList);
 
   if (sessionData.usingListSizeOnStart.m > 0 && listArray.length === 0) {
-    if (sessionData.mode === "memory" && (sessionData.list === "checked" || sessionData.list === "marked")) {
+    if (
+      sessionData.mode === "memory" &&
+      (sessionData.list === "checked" || sessionData.list === "marked")
+    ) {
       showAlert("リスト内のメンバーを全て表示しました。");
       qNext.classList.add("disabled");
     }
@@ -691,7 +757,9 @@ function setQuestion(member) {
   const qTextElm = document.getElementById("question-text");
   qTextElm.innerHTML = "";
 
-  const questionStatus = document.getElementById("question-status").querySelector("span");
+  const questionStatus = document
+    .getElementById("question-status")
+    .querySelector("span");
 
   if (checked_member.includes(member.id)) {
     questionStatus.classList.add("check");
@@ -706,7 +774,9 @@ function setQuestion(member) {
 
   if (document.getElementById("setting-artist_photo").checked) {
     qImgElm.classList.add("js-img-loading");
-    qImgElm.querySelector("img").setAttribute("src", member.visual);
+    qImgElm
+      .querySelector("img")
+      .setAttribute("src", member.visual + "?ver=" + updated);
     qImgElm.querySelector("img").onload = () => {
       qImgElm.classList.remove("js-img-loading");
     };
@@ -715,13 +785,20 @@ function setQuestion(member) {
     if (member.images.length > 0) {
       const random_i = Math.floor(Math.random() * member.images.length);
       qImgElm.classList.add("js-img-loading");
-      qImgElm.querySelector("img").setAttribute("src", imagePath + member.id + "/" + member.images[random_i]);
+      qImgElm
+        .querySelector("img")
+        .setAttribute(
+          "src",
+          imagePath + member.id + "/" + member.images[random_i]
+        );
       qImgElm.querySelector("img").onload = () => {
         qImgElm.classList.remove("js-img-loading");
       };
     } else {
       qImgElm.classList.add("js-img-loading");
-      qImgElm.querySelector("img").setAttribute("src", member.visual);
+      qImgElm
+        .querySelector("img")
+        .setAttribute("src", member.visual + "?ver=" + updated);
       qImgElm.querySelector("img").onload = () => {
         qImgElm.classList.remove("js-img-loading");
       };
@@ -731,7 +808,8 @@ function setQuestion(member) {
     const p1 = document.createElement("p");
     const p2 = document.createElement("p");
     if (document.getElementById("setting-color").checked) {
-      const colorcode = COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
+      const colorcode =
+        COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
       qTextElm.style.borderColor = colorcode;
       qTextElm.style.color = colorcode;
 
@@ -750,7 +828,9 @@ function setQuestion(member) {
   }
 
   if (mode === "select") {
-    const buttons = questionControl.querySelector(".mode-select").querySelectorAll("button");
+    const buttons = questionControl
+      .querySelector(".mode-select")
+      .querySelectorAll("button");
     const random1in4 = Math.floor(4 * Math.random());
     const avoid = [];
     avoid.push(member.groupid + "-" + member.id);
@@ -783,9 +863,13 @@ function setAnswer(member, onResultDisplay = "") {
   const aColorElm = document.getElementById(onResultDisplay + "color");
   const aBirthdayElm = document.getElementById(onResultDisplay + "birthday");
   const aCopyElm = document.getElementById(onResultDisplay + "copy");
-  const aSNSElms = document.getElementById(onResultDisplay + "sns").querySelectorAll("a");
+  const aSNSElms = document
+    .getElementById(onResultDisplay + "sns")
+    .querySelectorAll("a");
 
-  const answerStatus = document.getElementById("answer-status").querySelector("span");
+  const answerStatus = document
+    .getElementById("answer-status")
+    .querySelector("span");
   const answerCheck = document.getElementById("answer-check");
   const answerMark = document.getElementById("answer-marked");
 
@@ -805,7 +889,9 @@ function setAnswer(member, onResultDisplay = "") {
   }
 
   aImgElm.classList.add("js-img-loading");
-  aImgElm.querySelector("img").setAttribute("src", member.visual);
+  aImgElm
+    .querySelector("img")
+    .setAttribute("src", member.visual + "?ver=" + updated);
   aImgElm.querySelector("img").onload = () => {
     aImgElm.classList.remove("js-img-loading");
   };
@@ -830,9 +916,13 @@ function setAnswer(member, onResultDisplay = "") {
   }
   if (member.colorName) {
     aColorElm.querySelector("span").textContent = member.colorName;
-    aColorElm.querySelector("span").style.backgroundColor = COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
+    aColorElm.querySelector("span").style.backgroundColor =
+      COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color];
 
-    if (brightness(COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color]) < 0.5) {
+    if (
+      brightness(COLOR_CODES[member.colorName] ?? COLOR_CODES[member.color]) <
+      0.5
+    ) {
       aColorElm.querySelector("span").style.color = "#ffffff";
     } else {
       aColorElm.querySelector("span").style.color = "#000000";
@@ -855,6 +945,10 @@ function setAnswer(member, onResultDisplay = "") {
     tiktok: "https://tiktok.com/@",
   };
 
+  const optionalSnsUrls = {
+    youtube: "https://www.youtube.com/@",
+  };
+
   Object.keys(snsUrls).forEach((key, i) => {
     if (member[key] && member[key] != "") {
       aSNSElms[i].classList.remove("disabled");
@@ -867,7 +961,21 @@ function setAnswer(member, onResultDisplay = "") {
     }
   });
 
-  aGroupElm.textContent = member.group ?? data[getGroupIDbyMemberID(member.id)].name;
+  Object.keys(optionalSnsUrls).forEach((key, i) => {
+    const ii = Object.keys(snsUrls).length + i;
+    if (member[key] && member[key] != "") {
+      aSNSElms[ii].parentNode.classList.remove("invisible");
+      aSNSElms[ii].href = optionalSnsUrls[key] + member[key];
+      aSNSElms[ii].setAttribute("rel", "noopener noreferrer");
+      aSNSElms[ii].setAttribute("target", "blank_");
+    } else {
+      aSNSElms[ii].href = "";
+      aSNSElms[ii].parentNode.classList.add("invisible");
+    }
+  });
+
+  aGroupElm.textContent =
+    member.group ?? data[getGroupIDbyMemberID(member.id)].name;
 }
 
 function setResultAnswer(e, member, onResultDisplay) {
@@ -891,11 +999,19 @@ function setResultAnswer(e, member, onResultDisplay) {
     outer.classList.remove("closed");
 
     if (targetTop < window.innerHeight / 2) {
-      outer.style.transform = "translateY(" + Number(scrollTop + targetTop - targetHeight / 2) + "px)";
+      outer.style.transform =
+        "translateY(" +
+        Number(scrollTop + targetTop - targetHeight / 2) +
+        "px)";
     } else {
       outer.style.transform =
         "translateY(" +
-        Number(scrollTop + targetTop - targetHeight * 1.5 - outer.getBoundingClientRect().height) +
+        Number(
+          scrollTop +
+            targetTop -
+            targetHeight * 1.5 -
+            outer.getBoundingClientRect().height
+        ) +
         "px)";
     }
   }
@@ -910,7 +1026,10 @@ function closeResultAnswer() {
 function convertInputAnswerToId(inputA) {
   for (const group of Object.keys(data)) {
     for (const member of Object.keys(data[group].members)) {
-      if (inputA.replaceAll(" ", "").replaceAll("･", "・") === data[group].members[member].name.replaceAll(" ", "")) {
+      if (
+        inputA.replaceAll(" ", "").replaceAll("･", "・") ===
+        data[group].members[member].name.replaceAll(" ", "")
+      ) {
         return data[group].members[member].id;
       }
     }
@@ -973,8 +1092,6 @@ function showAlert(message, type = "", gohome = false) {
   const alertWrapper = document.getElementById("alert-wrapper");
   const alertMessage = document.getElementById("alert-message");
 
-  alertControl.checked = true;
-
   alertMessage.textContent = message;
   alertWrapper.classList.remove(...alertWrapper.classList);
   if (type != "") {
@@ -987,10 +1104,14 @@ function showAlert(message, type = "", gohome = false) {
     alertControl.classList.remove("js-go-home");
   }
   alertController.querySelector("label").focus();
+
+  alertControl.checked = true;
+  alertControl.dispatchEvent(new Event("change"));
 }
 
 function sanitizeInput(input) {
-  const regex = /^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\uFF10-\uFF19\u3000-\u303F･・ー]+$/;
+  const regex =
+    /^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF\uFF10-\uFF19\u3000-\u303F･・ー]+$/;
   if (input === "") {
     showAlert("解答が入力されていません", "error");
     return "";

@@ -7,13 +7,25 @@ window.addEventListener("DOMContentLoaded", () => {
   const isIOS = /iP(hone|(o|a)d)/.test(navigator.userAgent);
 
   /*HEADER*/
-  const radios = document.getElementById("setting-radios").querySelectorAll("input");
-  const homeRadios = document.getElementById("home-setting-radios").querySelectorAll("input");
+  const radios = document
+    .getElementById("setting-radios")
+    .querySelectorAll("input");
+  const homeRadios = document
+    .getElementById("home-setting-radios")
+    .querySelectorAll("input");
 
-  const checkboxes = document.getElementById("setting-checkboxes").querySelectorAll("input");
-  const groupClasses = document.getElementById("setting-checkboxes").querySelectorAll("h3");
-  const homeCheckboxes = document.getElementById("home-setting-checkboxes").querySelectorAll("input");
-  const homeGroupClasses = document.getElementById("home-setting-checkboxes").querySelectorAll("h3");
+  const checkboxes = document
+    .getElementById("setting-checkboxes")
+    .querySelectorAll("input");
+  const groupClasses = document
+    .getElementById("setting-checkboxes")
+    .querySelectorAll("h3");
+  const homeCheckboxes = document
+    .getElementById("home-setting-checkboxes")
+    .querySelectorAll("input");
+  const homeGroupClasses = document
+    .getElementById("home-setting-checkboxes")
+    .querySelectorAll("h3");
 
   const groupIndicators = document.querySelectorAll(".setting-groups");
 
@@ -21,11 +33,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const qmode = document.getElementById("q-mode");
   const qlist = document.getElementById("q-list");
 
-  const aInput = document.getElementById("question-control").querySelector(".mode-input").querySelector("input");
+  const aInput = document
+    .getElementById("question-control")
+    .querySelector(".mode-input")
+    .querySelector("input");
   const alertController = document.getElementById("alert-controller");
 
   const homeButton = document.getElementById("home");
-  const hamburger = document.querySelector("header").querySelector(".hamburger");
+  const hamburger = document
+    .querySelector("header")
+    .querySelector(".hamburger");
   const helpButton = document.getElementById("help");
   const alertHelp = document.getElementById("alert-help");
 
@@ -77,8 +94,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function setIndicator() {
       groupIndicators.forEach((ul) => {
-        if (check.getAttribute("name").replace("home-", "") === "setting-group") {
-          const target = ul.querySelector('li[data-group="' + check.id.replace("setting-", "") + '"]');
+        if (
+          check.getAttribute("name").replace("home-", "") === "setting-group"
+        ) {
+          const target = ul.querySelector(
+            'li[data-group="' + check.id.replace("setting-", "") + '"]'
+          );
           if (check.checked) {
             target.classList.remove("disabled");
           } else {
@@ -100,7 +121,9 @@ window.addEventListener("DOMContentLoaded", () => {
         qsetting.value = radio.id.replace("setting-", "");
         document
           .getElementById("home-setting-radios")
-          .querySelector("input[data-targetid='" + qsetting.value + "']").checked = true;
+          .querySelector(
+            "input[data-targetid='" + qsetting.value + "']"
+          ).checked = true;
       }
 
       const mode = qmode.value;
@@ -124,7 +147,7 @@ window.addEventListener("DOMContentLoaded", () => {
       qNext.classList.remove("js-showQ");
       qNext.classList.add("js-showA");
 
-      document.getElementById("headaer-nav-contoroller").checked = false;
+      document.getElementById("header-nav-contoroller").checked = false;
     });
   });
 
@@ -136,7 +159,9 @@ window.addEventListener("DOMContentLoaded", () => {
       check.checked = currentStates[check.getAttribute("data-targetid")];
     }
     check.addEventListener("change", () => {
-      const target = document.getElementById(check.getAttribute("data-targetid"));
+      const target = document.getElementById(
+        check.getAttribute("data-targetid")
+      );
       if (check.checked) {
         target.checked = true;
       } else {
@@ -163,14 +188,63 @@ window.addEventListener("DOMContentLoaded", () => {
   navs.forEach((nav) => {
     const buttons = nav.querySelectorAll("button");
 
+    const isHeader = nav.parentNode.tagName.toLowerCase() === "header";
+
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
+        button.disabled = true;
         const mode = button.getAttribute("data-mode");
         const list = button.getAttribute("data-list");
         const setting = qsetting.value;
-        startSession(mode, list, setting);
+
+        const rWrapper = document.getElementById("result-wrapper");
+
+        const alertOKAction = document.getElementById("alertOKAction");
+
+        const okAction = {
+          changeMode: {
+            mode: mode,
+            list: list,
+            setting: setting,
+          },
+        };
+
+        alertOKAction.value = JSON.stringify(okAction);
+
+        alertController
+          .querySelector(".ok")
+          .setAttribute("data-action", "changeMode");
+
+        if (isHeader) {
+          if (
+            rWrapper.classList.contains("active") ||
+            qmode.value === "memory"
+          ) {
+            startSession(mode, list, setting);
+          } else {
+            document.getElementById("header-nav-contoroller").checked = false;
+            showAlert("出題方法を変更しますか？", "yn", false);
+          }
+        } else {
+          startSession(mode, list, setting);
+        }
       });
+      button.disabled = false;
     });
+  });
+
+  alertController.querySelector(".ok").addEventListener("click", () => {
+    const alertOKAction = document.getElementById("alertOKAction");
+    const okAction = JSON.parse(alertOKAction.value);
+    const action = alertController
+      .querySelector(".ok")
+      .getAttribute("data-action");
+
+    startSession(
+      okAction[action].mode,
+      okAction[action].list,
+      okAction[action].setting
+    );
   });
 
   function startSession(mode, list, setting) {
@@ -205,7 +279,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const N = list === "random10" && listSize.m >= 10 ? 10 : listSize.m;
 
     if (list === "random10" && listSize.m < 10) {
-      showAlert("対象メンバーが10に満たないため、対象メンバーを全て出題して終了します。", "error");
+      showAlert(
+        "対象メンバーが10に満たないため、対象メンバーを全て出題して終了します。",
+        "error"
+      );
     }
 
     setSessionData({
@@ -240,12 +317,14 @@ window.addEventListener("DOMContentLoaded", () => {
       alertWrapper.classList.remove("js-wait-loading");
 
       if (!isIOS && mode === "input") {
-        const targetInput = questionControl.querySelector(".mode-input").querySelector("input");
+        const targetInput = questionControl
+          .querySelector(".mode-input")
+          .querySelector("input");
         targetInput.focus();
       }
     });
 
-    document.getElementById("headaer-nav-contoroller").checked = false;
+    document.getElementById("header-nav-contoroller").checked = false;
   }
 
   /*SETTING*/
@@ -264,9 +343,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (rWrapper.classList.contains("active") || qmode.value === "memory") {
       goHomeScreen();
     } else {
-      showAlert("ホーム画面に戻りますか？", "yn", false);
+      showAlert("ホーム画面に戻りますか？", "gohome", false);
     }
   });
+
   alertController.querySelector(".home").addEventListener("click", () => {
     goHomeScreen();
   });
@@ -284,7 +364,9 @@ function sessionReset() {
   const pQWrapper = document.getElementById("js-prevQuestion-wrapper");
   const raOuter = document.getElementById("result-answer-outer");
 
-  const resultQuestionsList = document.getElementById("result-questions").querySelector("tbody");
+  const resultQuestionsList = document
+    .getElementById("result-questions")
+    .querySelector("tbody");
 
   const prevQ = document.getElementById("prevQ");
   const currentQ = document.getElementById("currentQ");
@@ -300,7 +382,9 @@ function sessionReset() {
   const alertControl = document.getElementById("alert-control");
 
   const homeButton = document.getElementById("home");
-  const hamburger = document.querySelector("header").querySelector(".hamburger");
+  const hamburger = document
+    .querySelector("header")
+    .querySelector(".hamburger");
   const helpButton = document.getElementById("help");
 
   qWrapper.classList.remove("active");

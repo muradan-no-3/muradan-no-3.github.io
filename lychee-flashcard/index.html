@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head prefix="og: http://ogp.me/ns#">
     <meta charset="UTF-8" />
@@ -12,7 +12,10 @@
       content="サークルライチ,マーキュロ,クララ・マグラ,ベロティカ,ガラチア,白百合と雨,VILLAINS HOUSE,クライセカイ,ギミック,閻魔ちゃん,アイドル,サブカル"
     />
     <!--OGP-->
-    <meta property="og:url" content="https://muradan-no-3.github.io/lychee-flashcard/" />
+    <meta
+      property="og:url"
+      content="https://muradan-no-3.github.io/lychee-flashcard/"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="サークルライチ記憶帖" />
     <meta
@@ -20,17 +23,23 @@
       content="マーキュロが主宰するサブカルアイドルレーベル「サークルライチ」のメンバーを覚えるための非公式クイズWebアプリです。"
     />
     <meta property="og:site_name" content="サークルライチ記憶帖" />
-    <meta property="og:image" content="https://muradan-no-3.github.io/lychee-flashcard/assets/img/title_visual.jpg" />
+    <meta
+      property="og:image"
+      content="https://muradan-no-3.github.io/lychee-flashcard/assets/img/title_visual.jpg"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@muradan_no_3" />
     <!--STYLE-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" href="./assets/css/style.css?=202409072114" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css?=202411111557" />
     <!--SCRIPT-->
-    <script src="./assets/js/database.js?=202409072114"></script>
-    <script src="./assets/js/main.js?=202409072114"></script>
-    <script src="./assets/js/setting.js?=202409072114"></script>
-    <script src="./assets/js/accordion.js?=202409072114"></script>
+    <script src="./assets/js/database.js?=202411111557"></script>
+    <script src="./assets/js/main.js?=202411111557"></script>
+    <script src="./assets/js/setting.js?=202411111557"></script>
+    <script src="./assets/js/accordion.js?=202411111557"></script>
     <!--FONTS-->
     <link
       rel="stylesheet"
@@ -38,9 +47,16 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap"
+      rel="stylesheet"
+    />
     <!--FAVICON-->
-    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon-180x180.png" />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      href="/apple-touch-icon-180x180.png"
+    />
     <link rel="icon" type="image/png" href="/icon-192x192.png" />
     <link rel="manifest" href="/manifest.json" />
 
@@ -51,38 +67,56 @@
       <button id="home" class="icon home"></button>
       <div id="header-display"></div>
       <label id="help" class="icon help" for="alert-control"></label>
-      <label class="hamburger" for="headaer-nav-contoroller">
+      <label class="hamburger" for="header-nav-contoroller">
         <hr />
         <hr />
         <hr />
       </label>
-      <input class="visually-hidden" type="checkbox" name="" id="headaer-nav-contoroller" />
+      <input
+        class="visually-hidden"
+        type="checkbox"
+        name=""
+        id="header-nav-contoroller"
+      />
       <nav>
         <ul>
           <li>
             <h2>出題方法</h2>
             <p>出題方法の設定を変更できます。</p>
-            <p>※解答中に設定を変更するとそれまでの回答や成績はリセットされます。</p>
+            <p>
+              ※解答中に設定を変更するとそれまでの回答や成績はリセットされます。
+            </p>
             <div id="setting-radios">
               <label
-                ><input type="radio" name="questiontype" id="setting-artist_photo" /><span class="icon profile"
+                ><input
+                  type="radio"
+                  name="questiontype"
+                  id="setting-artist_photo"
+                /><span class="icon profile"
                   >アーティスト写真で出題</span
                 ></label
               >
               <label
-                ><input type="radio" name="questiontype" id="setting-other_photo" checked /><span class="icon photo"
-                  >その他の写真で出題</span
-                ></label
+                ><input
+                  type="radio"
+                  name="questiontype"
+                  id="setting-other_photo"
+                  checked
+                /><span class="icon photo">その他の写真で出題</span></label
               >
               <label
-                ><input type="radio" name="questiontype" id="setting-color" /><span class="icon penlight"
-                  >メンバーカラーで出題</span
-                ></label
+                ><input
+                  type="radio"
+                  name="questiontype"
+                  id="setting-color"
+                /><span class="icon penlight">メンバーカラーで出題</span></label
               >
               <label
-                ><input type="radio" name="questiontype" id="setting-copy" /><span class="icon chat"
-                  >キャッチコピーで出題</span
-                ></label
+                ><input
+                  type="radio"
+                  name="questiontype"
+                  id="setting-copy"
+                /><span class="icon chat">キャッチコピーで出題</span></label
               >
             </div>
             <!-- /.setting-radios -->
@@ -108,10 +142,15 @@
                   <li data-group="kuraisekai">💊</li>
                   <li data-group="gimmick">⚙️</li>
                   <li data-group="enma">🧛🏻</li>
+                  <li data-group="jukusei">🎀</li>
                 </ul>
               </div>
             </div>
-            <div id="setting-checkboxes" class="js-accordion close" aria-hidden="true">
+            <div
+              id="setting-checkboxes"
+              class="js-accordion close"
+              aria-hidden="true"
+            >
               <h3>
                 <label>
                   <input
@@ -209,7 +248,13 @@
               </h3>
               <div class="group-class">
                 <label
-                  ><input type="checkbox" name="setting-group" class="visually-hidden" id="setting-villains" checked />
+                  ><input
+                    type="checkbox"
+                    name="setting-group"
+                    class="visually-hidden"
+                    id="setting-villains"
+                    checked
+                  />
                   👻VILLAINS HOUSE😈</label
                 >
                 <label
@@ -240,37 +285,122 @@
                   />🧛🏻閻魔ちゃん⚰️</label
                 >
               </div>
+              <h3>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="setting-group-class"
+                    class="visually-hidden"
+                    id="setting-jukusei"
+                    checked
+                  />塾生
+                </label>
+              </h3>
+              <div class="group-class">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="setting-group"
+                    class="visually-hidden"
+                    id="setting-jukusei"
+                    checked
+                  />🎀サークルライチ塾生✨</label
+                >
+              </div>
             </div>
           </li>
           <li>
             <h2>暗記モード</h2>
             <p>出題と回答表示を繰り返し、覚えたメンバーを記録していきます。</p>
             <ul>
-              <li><button class="icon group" data-mode="memory" data-list="all">全メンバー</button></li>
-              <li><button class="icon marked" data-mode="memory" data-list="marked">マーク付き</button></li>
-              <li><button class="icon check" data-mode="memory" data-list="checked">覚えたメンバーを確認</button></li>
+              <li>
+                <button class="icon group" data-mode="memory" data-list="all">
+                  全メンバー
+                </button>
+              </li>
+              <li>
+                <button
+                  class="icon marked"
+                  data-mode="memory"
+                  data-list="marked"
+                >
+                  マーク付き
+                </button>
+              </li>
+              <li>
+                <button
+                  class="icon check"
+                  data-mode="memory"
+                  data-list="checked"
+                >
+                  覚えたメンバーを確認
+                </button>
+              </li>
             </ul>
           </li>
           <li>
             <h2>4択モード</h2>
-            <p>メンバー名を4つの選択肢から選びます。最後にスコアが表示されます。</p>
+            <p>
+              メンバー名を4つの選択肢から選びます。最後にスコアが表示されます。
+            </p>
             <ul>
-              <li><button class="icon ten" data-mode="select" data-list="random10">ランダム10</button></li>
-              <li><button class="icon group" data-mode="select" data-list="all">全メンバー</button></li>
-              <li><button class="icon marked" data-mode="select" data-list="marked">マーク付き</button></li>
+              <li>
+                <button
+                  class="icon ten"
+                  data-mode="select"
+                  data-list="random10"
+                >
+                  ランダム10
+                </button>
+              </li>
+              <li>
+                <button class="icon group" data-mode="select" data-list="all">
+                  全メンバー
+                </button>
+              </li>
+              <li>
+                <button
+                  class="icon marked"
+                  data-mode="select"
+                  data-list="marked"
+                >
+                  マーク付き
+                </button>
+              </li>
             </ul>
           </li>
           <li>
             <h2>入力モード</h2>
-            <p>メンバー名をキーボードで入力して解答します。最後にスコアが表示されます。</p>
+            <p>
+              メンバー名をキーボードで入力して解答します。最後にスコアが表示されます。
+            </p>
             <p class="notice">※ フルネーム・正式な表記のみ正解となります。</p>
             <p class="notice">※ スペースの有無は判定に影響しません。</p>
-            <p class="notice">※ VILLAINS HOUSEは略称を除いたフルネームを「・」込みで入力してください。</p>
+            <p class="notice">
+              ※ VILLAINS
+              HOUSEは略称を除いたフルネームを「・」込みで入力してください。
+            </p>
             <p class="notice">※ 閻魔じゃないだろ？ちゃんを付けろよ。</p>
             <ul>
-              <li><button class="icon ten" data-mode="input" data-list="random10">ランダム10</button></li>
-              <li><button class="icon group" data-mode="input" data-list="all">全メンバー</button></li>
-              <li><button class="icon marked" data-mode="input" data-list="marked">マーク付き</button></li>
+              <li>
+                <button class="icon ten" data-mode="input" data-list="random10">
+                  ランダム10
+                </button>
+              </li>
+              <li>
+                <button class="icon group" data-mode="input" data-list="all">
+                  全メンバー
+                </button>
+              </li>
+              <li>
+                <button
+                  class="icon marked"
+                  data-mode="input"
+                  data-list="marked"
+                >
+                  マーク付き
+                </button>
+              </li>
             </ul>
           </li>
           <li>
@@ -278,7 +408,12 @@
             <p>メンバー情報一覧ページに移動します。</p>
             <ul>
               <li>
-                <a class="button rounded icon profile-card" href="./members.html"> メンバー一覧 </a>
+                <a
+                  class="button rounded icon profile-card"
+                  href="./members.html"
+                >
+                  メンバー一覧
+                </a>
               </li>
             </ul>
           </li>
@@ -295,26 +430,37 @@
               <p>出題方法を設定します。</p>
               <div id="home-setting-radios" class="setting-radios">
                 <label
-                  ><input type="radio" name="setting-questiontype" data-targetid="artist_photo" /><span
-                    class="icon profile"
+                  ><input
+                    type="radio"
+                    name="setting-questiontype"
+                    data-targetid="artist_photo"
+                  /><span class="icon profile"
                     >アーティスト写真で出題</span
                   ></label
                 >
                 <label
-                  ><input type="radio" name="setting-questiontype" data-targetid="other_photo" checked /><span
-                    class="icon photo"
-                    >その他の写真で出題</span
-                  ></label
+                  ><input
+                    type="radio"
+                    name="setting-questiontype"
+                    data-targetid="other_photo"
+                    checked
+                  /><span class="icon photo">その他の写真で出題</span></label
                 >
                 <label
-                  ><input type="radio" name="setting-questiontype" data-targetid="color" /><span class="icon penlight"
+                  ><input
+                    type="radio"
+                    name="setting-questiontype"
+                    data-targetid="color"
+                  /><span class="icon penlight"
                     >メンバーカラーで出題</span
                   ></label
                 >
                 <label
-                  ><input type="radio" name="setting-questiontype" data-targetid="copy" /><span class="icon chat"
-                    >キャッチコピーで出題</span
-                  ></label
+                  ><input
+                    type="radio"
+                    name="setting-questiontype"
+                    data-targetid="copy"
+                  /><span class="icon chat">キャッチコピーで出題</span></label
                 >
               </div>
             </li>
@@ -339,10 +485,15 @@
                     <li data-group="kuraisekai">💊</li>
                     <li data-group="gimmick">⚙️</li>
                     <li data-group="enma">🧛🏻</li>
+                    <li data-group="jukusei">🎀</li>
                   </ul>
                 </div>
               </div>
-              <div id="home-setting-checkboxes" class="setting-checkboxes js-accordion close" aria-hidden="true">
+              <div
+                id="home-setting-checkboxes"
+                class="setting-checkboxes js-accordion close"
+                aria-hidden="true"
+              >
                 <h3>
                   <label>
                     <input
@@ -476,37 +627,128 @@
                     />🧛🏻閻魔ちゃん⚰️</label
                   >
                 </div>
+                <h3>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="home-setting-group-class"
+                      class="visually-hidden"
+                      data-targetid="setting-jukusei"
+                      checked
+                    />塾生
+                  </label>
+                </h3>
+                <div class="group-class">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="home-setting-group"
+                      class="visually-hidden"
+                      data-targetid="setting-jukusei"
+                      checked
+                    />🎀サークルライチ塾生✨</label
+                  >
+                </div>
               </div>
             </li>
             <li>
               <h2>暗記モード</h2>
-              <p>出題と回答表示を繰り返し、覚えたメンバーを記録していきます。</p>
+              <p>
+                出題と回答表示を繰り返し、覚えたメンバーを記録していきます。
+              </p>
               <ul>
-                <li><button class="icon group" data-mode="memory" data-list="all">全メンバー</button></li>
-                <li><button class="icon marked" data-mode="memory" data-list="marked">マーク付き</button></li>
-                <li><button class="icon check" data-mode="memory" data-list="checked">覚えたメンバーを確認</button></li>
+                <li>
+                  <button class="icon group" data-mode="memory" data-list="all">
+                    全メンバー
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="icon marked"
+                    data-mode="memory"
+                    data-list="marked"
+                  >
+                    マーク付き
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="icon check"
+                    data-mode="memory"
+                    data-list="checked"
+                  >
+                    覚えたメンバーを確認
+                  </button>
+                </li>
               </ul>
             </li>
             <li>
               <h2>4択モード</h2>
-              <p>メンバー名を4つの選択肢から選びます。最後にスコアが表示されます。</p>
+              <p>
+                メンバー名を4つの選択肢から選びます。最後にスコアが表示されます。
+              </p>
               <ul>
-                <li><button class="icon ten" data-mode="select" data-list="random10">ランダム10</button></li>
-                <li><button class="icon group" data-mode="select" data-list="all">全メンバー</button></li>
-                <li><button class="icon marked" data-mode="select" data-list="marked">マーク付き</button></li>
+                <li>
+                  <button
+                    class="icon ten"
+                    data-mode="select"
+                    data-list="random10"
+                  >
+                    ランダム10
+                  </button>
+                </li>
+                <li>
+                  <button class="icon group" data-mode="select" data-list="all">
+                    全メンバー
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="icon marked"
+                    data-mode="select"
+                    data-list="marked"
+                  >
+                    マーク付き
+                  </button>
+                </li>
               </ul>
             </li>
             <li>
               <h2>入力モード</h2>
-              <p>メンバー名をキーボードで入力して解答します。最後にスコアが表示されます。</p>
+              <p>
+                メンバー名をキーボードで入力して解答します。最後にスコアが表示されます。
+              </p>
               <p class="notice">※ フルネーム・正式な表記のみ正解となります。</p>
               <p class="notice">※ スペースの有無は判定に影響しません。</p>
-              <p class="notice">※ VILLAINS HOUSEは略称を除いたフルネームを「・」込みで入力してください。</p>
+              <p class="notice">
+                ※ VILLAINS
+                HOUSEは略称を除いたフルネームを「・」込みで入力してください。
+              </p>
               <p class="notice">※ 閻魔じゃないだろ？ちゃんを付けろよ。</p>
               <ul>
-                <li><button class="icon ten" data-mode="input" data-list="random10">ランダム10</button></li>
-                <li><button class="icon group" data-mode="input" data-list="all">全メンバー</button></li>
-                <li><button class="icon marked" data-mode="input" data-list="marked">マーク付き</button></li>
+                <li>
+                  <button
+                    class="icon ten"
+                    data-mode="input"
+                    data-list="random10"
+                  >
+                    ランダム10
+                  </button>
+                </li>
+                <li>
+                  <button class="icon group" data-mode="input" data-list="all">
+                    全メンバー
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="icon marked"
+                    data-mode="input"
+                    data-list="marked"
+                  >
+                    マーク付き
+                  </button>
+                </li>
               </ul>
             </li>
             <li>
@@ -514,7 +756,12 @@
               <p>メンバー情報一覧ページに移動します。</p>
               <ul>
                 <li>
-                  <a class="button rounded icon profile-card" href="./members.html"> メンバー一覧 </a>
+                  <a
+                    class="button rounded icon profile-card"
+                    href="./members.html"
+                  >
+                    メンバー一覧
+                  </a>
                 </li>
               </ul>
             </li>
@@ -577,16 +824,29 @@
               <div id="copy"></div>
               <ul id="sns">
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/xsns-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/xsns-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/xsub-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/xsub-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/ig-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/ig-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/tiktok-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/tiktok-icon.svg" alt=""
+                  /></a>
+                </li>
+                <li>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/youtube-icon.svg" alt=""
+                  /></a>
                 </li>
               </ul>
               <!-- /#sns -->
@@ -618,7 +878,12 @@
           </div>
           <!-- /.mode-select -->
           <div class="mode-input">
-            <input type="text" placeholder="解答を入力" autocomplete="off" enterkeyhint="send" />
+            <input
+              type="text"
+              placeholder="解答を入力"
+              autocomplete="off"
+              enterkeyhint="send"
+            />
             <button class="icon arrowright" id="answerSend"></button>
           </div>
           <!-- /.mode-input -->
@@ -630,7 +895,10 @@
               <div><span></span><span></span></div>
               正解!
             </div>
-            <p class="note">リストを<span class="tap-click"></span>すると正解メンバーの情報を確認できます。</p>
+            <p class="note">
+              リストを<span class="tap-click"></span
+              >すると正解メンバーの情報を確認できます。
+            </p>
             <!-- /.note -->
             <!-- /#result-score -->
             <table id="result-questions">
@@ -638,8 +906,17 @@
             </table>
             <!-- /#result-questions -->
 
-            <a id="result-share" href="" target="_blank" rel="noopener noreferrer" role="button" class="rounded"
-              ><img src="./assets/img/icons/xsns-icon.svg" alt="X" />で結果をシェア</a
+            <a
+              id="result-share"
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              role="button"
+              class="rounded"
+              ><img
+                src="./assets/img/icons/xsns-icon.svg"
+                alt="X"
+              />で結果をシェア</a
             >
             <!-- /.button rounded -->
             <button id="result-closer" class="icon resume">RETRY</button
@@ -662,7 +939,9 @@
                 <div id="result-position"></div>
                 <!-- /.answer-title -->
                 <div id="result-color_and_birthday">
-                  <div id="result-color" class="icon penlight"><span></span></div>
+                  <div id="result-color" class="icon penlight">
+                    <span></span>
+                  </div>
                   <div id="result-birthday" class="icon cake"></div>
                 </div>
                 <!-- /#result-color-birthday -->
@@ -674,16 +953,29 @@
               <div id="result-copy"></div>
               <ul id="result-sns">
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/xsns-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/xsns-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/xsub-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/xsub-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/ig-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/ig-icon.svg" alt=""
+                  /></a>
                 </li>
                 <li>
-                  <a href="" tabindex="-1"><img src="./assets/img/icons/tiktok-icon.svg" alt="" /></a>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/tiktok-icon.svg" alt=""
+                  /></a>
+                </li>
+                <li>
+                  <a href="" tabindex="-1"
+                    ><img src="./assets/img/icons/youtube-icon.svg" alt=""
+                  /></a>
                 </li>
               </ul>
               <!-- /#sns -->
@@ -695,11 +987,19 @@
         <!-- /#result-wrapper -->
       </div>
       <!-- /.main-outer -->
-      <input type="checkbox" name="" id="alert-control" class="visually-hidden" />
+      <input
+        type="checkbox"
+        name=""
+        id="alert-control"
+        class="visually-hidden"
+      />
       <div id="alert-wrapper">
         <div id="alert-help">
           <div id="help-memory">
-            <p>画面を<span class="tap-click"></span>するたびに出題と正解表示を繰り返します。</p>
+            <p>
+              画面を<span class="tap-click"></span
+              >するたびに出題と正解表示を繰り返します。
+            </p>
           </div>
           <div id="help-select">
             <p>4つの選択肢から解答を選びます。</p>
@@ -708,37 +1008,64 @@
             <p>キーボードで入力欄に解答を入力します。</p>
             <p class="notice">※ フルネーム・正式な表記のみ正解となります。</p>
             <p class="notice">※ スペースの有無は判定に影響しません。</p>
-            <p class="notice">※ VILLAINS HOUSEは略称を除いたフルネームを「・」込みで入力してください。</p>
+            <p class="notice">
+              ※ VILLAINS
+              HOUSEは略称を除いたフルネームを「・」込みで入力してください。
+            </p>
             <p class="notice">※ 閻魔じゃないだろ？ちゃんを付けろよ。</p>
           </div>
           <div id="help-all">
             <p>全てのメンバーの中からランダムに出題されます。</p>
             <div class="memory">
-              <p>暗記モードでは出題は無限に繰り返され、同じメンバーが重複して出題されます。</p>
-              <p><span class="icon check badge"></span>をつけたメンバーは出題から除外されます。</p>
+              <p>
+                暗記モードでは出題は無限に繰り返され、同じメンバーが重複して出題されます。
+              </p>
+              <p>
+                <span class="icon check badge"></span
+                >をつけたメンバーは出題から除外されます。
+              </p>
             </div>
             <div class="select">
-              <p>4択モードでは<span class="icon check badge"></span>をつけたメンバーも出題されます。</p>
+              <p>
+                4択モードでは<span class="icon check badge"></span
+                >をつけたメンバーも出題されます。
+              </p>
             </div>
             <div class="input">
-              <p>入力モードでは<span class="icon check badge"></span>をつけたメンバーも出題されます。</p>
+              <p>
+                入力モードでは<span class="icon check badge"></span
+                >をつけたメンバーも出題されます。
+              </p>
             </div>
           </div>
           <div id="help-random10">
             <p>全てのメンバーの中からランダムに重複なく10問出題されます。</p>
-            <p><span class="icon check badge"></span>をつけたメンバーも出題されます。</p>
+            <p>
+              <span class="icon check badge"></span
+              >をつけたメンバーも出題されます。
+            </p>
           </div>
           <div id="help-checked">
-            <p><span class="icon check badge"></span>をつけたメンバーが順に表示されます。</p>
             <p>
-              <span class="icon check badge"></span>を外したり、<span class="icon marked badge"></span
+              <span class="icon check badge"></span
+              >をつけたメンバーが順に表示されます。
+            </p>
+            <p>
+              <span class="icon check badge"></span>を外したり、<span
+                class="icon marked badge"
+              ></span
               >をつけたりすることもできます。
             </p>
           </div>
           <div id="help-marked">
-            <p><span class="icon marked badge"></span>をつけたメンバーが出題されます。</p>
             <p>
-              <span class="icon marked badge"></span>を外したり、<span class="icon check badge"></span
+              <span class="icon marked badge"></span
+              >をつけたメンバーが出題されます。
+            </p>
+            <p>
+              <span class="icon marked badge"></span>を外したり、<span
+                class="icon check badge"
+              ></span
               >をつけたりすることもできます。
             </p>
           </div>
@@ -746,8 +1073,12 @@
         <div id="alert-message"></div>
         <div id="alert-controller">
           <label class="icon close" for="alert-control">close</label>
-          <label class="button icon home" for="alert-control">戻る</label>
-          <label class="button icon close" for="alert-control">キャンセル</label>
+          <label class="button icon home" for="">戻る</label>
+          <input type="hidden" id="alertOKAction" value="" />
+          <label class="button icon ok" for="">OK</label>
+          <label class="button icon close" for="alert-control"
+            >キャンセル</label
+          >
         </div>
         <!-- /.alert-message -->
       </div>
@@ -755,7 +1086,10 @@
       <label id="help-backdrop" for="alert-control"></label>
     </main>
     <footer>
-      <a href="https://x.com/muradan_no_3" target="_blank" rel="noopener noreferrer"
+      <a
+        href="https://x.com/muradan_no_3"
+        target="_blank"
+        rel="noopener noreferrer"
         >制作：<span class="at">muradan_no_3</span></a
       >
     </footer>

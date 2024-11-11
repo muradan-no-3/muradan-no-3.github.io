@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -6,14 +6,18 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <!--STYLE-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" href="./assets/css/style.css?ver=202409091615" />
-    <link rel="stylesheet" href="./assets/css/members.css?ver=202409091615" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css?ver=202411111557" />
+    <link rel="stylesheet" href="./assets/css/members.css?ver=202411111557" />
 
     <!--SCRIPT-->
-    <script src="./assets/js/database.js?ver=202409091615"></script>
-    <script src="./assets/js/fixtarget.js?ver=202409091615"></script>
-    <script src="./assets/js/search.js?ver=202409091615"></script>
+    <script src="./assets/js/database.js?ver=202411111557"></script>
+    <script src="./assets/js/fixtarget.js?ver=202411111557"></script>
+    <script src="./assets/js/search.js?ver=202411111557"></script>
+    <script src="./assets/js/accordion.js?ver=202411111557"></script>
     <!--FONTS-->
     <link
       rel="stylesheet"
@@ -21,37 +25,95 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap"
+      rel="stylesheet"
+    />
 
-    <title>メンバー一覧</title>
+    <title>メンバー検索</title>
   </head>
   <body>
     <a href="./" class="icon home js-fixed-size"></a>
     <div class="search-form">
       <form>
+        <h3><span>加入期</span></h3>
         <div class="search-class">
-          <label><input type="checkbox" name="search-class" class="visually-hidden" value="1" checked />1期生</label
-          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="2" checked />2期生</label
-          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="3" checked />3期生</label
-          ><label><input type="checkbox" name="search-class" class="visually-hidden" value="4" checked />4期生</label>
+          <label
+            ><input
+              type="checkbox"
+              name="search-class"
+              class="visually-hidden"
+              value="1"
+              checked
+            />1期生</label
+          ><label
+            ><input
+              type="checkbox"
+              name="search-class"
+              class="visually-hidden"
+              value="2"
+              checked
+            />2期生</label
+          ><label
+            ><input
+              type="checkbox"
+              name="search-class"
+              class="visually-hidden"
+              value="3"
+              checked
+            />3期生</label
+          ><label
+            ><input
+              type="checkbox"
+              name="search-class"
+              class="visually-hidden"
+              value="4"
+              checked
+            />4期生</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="search-class"
+              class="visually-hidden"
+              value="4.5"
+              checked
+            />塾生</label
+          >
         </div>
         <!-- /.search-class -->
+        <h3><span>メンバーカラー</span></h3>
         <div class="search-color">
-          <label><input type="radio" name="search-color" checked value="all" />指定なし</label
+          <label
+            ><input
+              type="radio"
+              name="search-color"
+              checked
+              value="all"
+            />指定なし</label
           ><label><input type="radio" name="search-color" value="赤" />赤</label
           ><label><input type="radio" name="search-color" value="黄" />黄</label
           ><label><input type="radio" name="search-color" value="緑" />緑</label
-          ><label><input type="radio" name="search-color" value="水色" />水色</label
+          ><label
+            ><input type="radio" name="search-color" value="水色" />水色</label
           ><label><input type="radio" name="search-color" value="青" />青</label
           ><label><input type="radio" name="search-color" value="紫" />紫</label
-          ><label><input type="radio" name="search-color" value="ピンク" />ピンク</label
+          ><label
+            ><input
+              type="radio"
+              name="search-color"
+              value="ピンク"
+            />ピンク</label
           ><label><input type="radio" name="search-color" value="白" />白</label
-          ><label><input type="radio" name="search-color" value="特殊" />特殊</label>
+          ><label
+            ><input type="radio" name="search-color" value="特殊" />特殊</label
+          >
         </div>
         <!-- /.search-color -->
+        <h3><span>誕生日</span></h3>
         <div class="search-birthmonth">
           <label
-            >誕生月
+            ><span>誕生月</span>
             <select name="search-birthmonth" id="search-birthmonth">
               <option value=""></option>
               <option value="1">1月</option>
@@ -68,18 +130,72 @@
               <option value="12">12月</option></select
             ><!-- /# -->
           </label>
-          <label>誕生日順ソート<input type="checkbox" name="" class="toggle" id="sort-by-birthday" /></label>
+          <label
+            >誕生日順ソート<input
+              type="checkbox"
+              name=""
+              class="toggle"
+              id="sort-by-birthday"
+          /></label>
         </div>
         <!-- /.search-birthmonth -->
-        <div class="search-id">
-          <label>ID<input type="text" id="search-id" /></label>
+        <h3
+          id="idsearch-h3"
+          class="js-accordion-button"
+          aria-expanded="false"
+          tabindex="0"
+          role="button"
+          aria-controls="setting-checkboxes"
+        >
+          <span>表示メンバーを直接指定</span>
+        </h3>
+
+        <div class="search-id js-accordion close" aria-hidden="true">
+          <label
+            ><input
+              type="checkbox"
+              class="visually-hidden"
+              id="idsearch-checkAll"
+            />全て選択</label
+          >
+          <div id="idsearch-list"></div>
+          <!-- /#idsearch-list -->
+          <input type="hidden" id="search-id" />
         </div>
         <!-- /.search-id -->
-        <div class="search-setting">
-          <label>詳細表示<input type="checkbox" name="setting" class="toggle" checked id="setting-detail" /></label>
+        <p class="notice">
+          ※1つ以上チェックされている場合、他の検索設定よりも優先されます。
+        </p>
+        <h3><span>表示設定</span></h3>
+        <div class="search-setting-wrapper">
+          <div class="search-setting">
+            <label
+              >詳細表示<input
+                type="checkbox"
+                name="setting"
+                class="toggle"
+                checked
+                id="setting-detail"
+            /></label>
+          </div>
+          <!-- /.search-setting -->
+
+          <div class="search-setting">
+            <label
+              >脱退／卒業メンバー表示<input
+                type="checkbox"
+                name="setting"
+                class="toggle"
+                checked
+                id="setting-exmember"
+            /></label>
+          </div>
+          <!-- /.search-setting -->
         </div>
-        <!-- /.search-setting -->
-        <button type="button" id="js-search-action" class="icon search">検索</button>
+
+        <button type="button" id="js-search-action" class="icon search">
+          検索
+        </button>
       </form>
     </div>
     <!-- /.search-form -->

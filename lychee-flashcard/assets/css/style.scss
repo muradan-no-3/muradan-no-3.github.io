@@ -46,7 +46,8 @@ a {
 
 body {
   overflow-y: scroll;
-  font-family: "Helvetica Neue", Arial, "Noto Sans", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Noto Sans", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text-gray);
@@ -60,28 +61,16 @@ body {
   &::before {
     font-family: "Material Symbols Outlined", mono-space;
     font-size: 24px;
-    font-variation-settings:
-      "FILL" 0,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 24;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   }
 
   &.home::before {
-    font-variation-settings:
-      "FILL" 1,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 24;
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
     content: "\e88a";
   }
 
   &.map-pin::before {
-    font-variation-settings:
-      "FILL" 1,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 24;
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
     content: "\e0c8";
   }
 
@@ -150,11 +139,7 @@ body {
   }
 
   &.resume::before {
-    font-variation-settings:
-      "FILL" 1,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 24;
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
     content: "\f7d0";
   }
 }
@@ -215,6 +200,7 @@ label:has(input[type="checkbox"]) {
 label:has(input.toggle) {
   display: inline-block;
   margin-top: 32px;
+  margin-right: 72px;
 }
 
 input.toggle {
@@ -274,6 +260,10 @@ button {
   pointer-events: none;
   cursor: default;
   opacity: 0.3;
+}
+
+.invisible {
+  display: none;
 }
 
 .tap-click {
@@ -603,9 +593,7 @@ header {
             color: var(--color-ui-purple);
             border: 2px solid var(--color-ui-purple);
             border-radius: 9999px;
-            transition:
-              background-color 0.1s linear,
-              color 0.1s linear;
+            transition: background-color 0.1s linear, color 0.1s linear;
 
             &::before {
               margin-right: 4px;
@@ -644,12 +632,10 @@ header {
     overflow: hidden;
     background: var(--color-bg-gray);
     opacity: 0;
-    transition:
-      width 0.3s ease,
-      opacity 0.3s ease;
+    transition: width 0.3s ease, opacity 0.3s ease;
   }
 
-  #headaer-nav-contoroller:checked + nav {
+  #header-nav-contoroller:checked + nav {
     width: 100%;
     height: 100vh;
     padding: 80px 16px 32px;
@@ -658,7 +644,7 @@ header {
   }
 }
 
-header:has(#headaer-nav-contoroller:checked) + main {
+header:has(#header-nav-contoroller:checked) + main {
   height: 80vh;
   overflow: hidden;
 }
@@ -755,9 +741,7 @@ header:has(#headaer-nav-contoroller:checked) + main {
 #setting-checkboxes {
   padding: 16px;
   overflow: hidden;
-  transition:
-    height 0.2s ease,
-    padding 0.2s ease;
+  transition: height 0.2s ease, padding 0.2s ease;
 
   &.close {
     height: 0;
@@ -835,9 +819,7 @@ label {
       color: #fff;
       content: "\e5ca";
       opacity: 0;
-      transition:
-        opacity 0.1s ease,
-        rotate 0.1s ease;
+      transition: opacity 0.1s ease, rotate 0.1s ease;
       rotate: 0deg;
     }
 
@@ -1308,7 +1290,8 @@ main {
   li {
     width: 24px;
     height: 24px;
-    filter: invert(83%) sepia(8%) saturate(128%) hue-rotate(22deg) brightness(90%) contrast(85%);
+    filter: invert(83%) sepia(8%) saturate(128%) hue-rotate(22deg)
+      brightness(90%) contrast(85%);
   }
 }
 
@@ -1733,9 +1716,7 @@ a.rounded {
   border: 1px solid var(--color-text-gray);
   border-radius: 16px;
   opacity: 1;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 
   &.closed {
     pointer-events: none;
@@ -1851,6 +1832,7 @@ a.rounded {
   opacity: 0;
   transition: opacity 0.3s ease;
 
+  &.gohome,
   &.yn {
     #alert-controller {
       bottom: 8px;
@@ -1863,7 +1845,6 @@ a.rounded {
       }
 
       .button {
-        display: flex;
         gap: 4px;
         align-items: center;
         justify-content: center;
@@ -1873,7 +1854,8 @@ a.rounded {
         border: 1px solid var(--color-text-gray);
         border-radius: 4px;
 
-        &.home {
+        &.home,
+        &.ok {
           color: var(--color-bg-black);
           background: var(--color-ui-purple);
           border-color: var(--color-ui-purple);
@@ -1890,6 +1872,19 @@ a.rounded {
           }
         }
       }
+    }
+  }
+
+  &.gohome {
+    .button.home,
+    .button.close {
+      display: flex;
+    }
+  }
+  &.yn {
+    .button.ok,
+    .button.close {
+      display: flex;
     }
   }
 
