@@ -72,7 +72,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (data[group].class != prevClass) {
       const classWrapper = document.createElement("div");
       classWrapper.classList.add("class-wrapper");
-      classWrapper.setAttribute("data-class", data[group].class + "期生");
+      classWrapper.setAttribute(
+        "data-class",
+        data[group].class == 4.5 ? "塾生" : data[group].class + "期生"
+      );
       classWrapper.id = "group-class-wrapper-" + data[group].class;
       classWrapper.appendChild(membersWrapper);
       currentClass = classWrapper;
