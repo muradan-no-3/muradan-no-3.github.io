@@ -484,7 +484,8 @@ const data = {
         copy: "『あなたの夢をいっぱい食べさせて』",
         birthday: "11/10",
         xid: "Setsuna_Amu",
-        xsub: "amu_mumupi",
+        /*xsub: "amu_mumupi",*/
+        xsub: "moon_amumu",
         ig: "moon_amu",
         tiktok: "moon_amu",
         visual: "./assets/img/amu.jpeg",
@@ -883,7 +884,8 @@ const data = {
       aya: {
         name: "縞居アヤ",
         kana: "しまずい あや",
-        xid: "nx___007",
+        /*xid: "nx___007",*/
+        xid: "ay_shirayuri",
         xsub: "___w27a",
         ig: "s0aya_il",
         tiktok: "___yy095",
