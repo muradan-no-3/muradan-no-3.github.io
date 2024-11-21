@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
       classWrapper.classList.add("class-wrapper");
       classWrapper.setAttribute(
         "data-class",
-        data[group].class == 4.5 ? "塾生" : data[group].class + "期生"
+        data[group].class == "4.5" ? "塾生" : data[group].class + "期生"
       );
       classWrapper.id = "group-class-wrapper-" + data[group].class;
       classWrapper.appendChild(membersWrapper);
