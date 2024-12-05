@@ -557,7 +557,7 @@ function initializeRandomArray(list) {
     usingMemberList[groups[i]] = [];
 
     const members = Object.keys(data[groups[i]].members);
-    for (let j = 0; j < data[groups[i]].n; j++) {
+    for (let j = 0; j < members.length; j++) {
       if (data[groups[i]].members[members[j]].isActive) {
         if (list === "full") {
           usingMemberList[groups[i]].push(members[j]);
@@ -602,6 +602,8 @@ function initializeRandomArray(list) {
       delete usingMemberList[groups[i]];
     }
   }
+
+  console.log({ groups: usingGroupList, members: usingMemberList });
 
   return { groups: usingGroupList, members: usingMemberList };
 }

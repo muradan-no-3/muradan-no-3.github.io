@@ -4,7 +4,6 @@ const updated = "20241111";
 const data = {
   mercuro: {
     name: "マーキュロ",
-    n: 7,
     xid: "mercuro_info",
     tiktok: "mercuro_info",
     timetree: "mercuro_info",
@@ -199,7 +198,6 @@ const data = {
 
   claramagra: {
     name: "クララ・マグラ",
-    n: 7,
     xid: "claramag_info",
     tiktok: "claramag_info",
     timetree: "claramag_info",
@@ -391,7 +389,6 @@ const data = {
   },
   verotica: {
     name: "ベロティカ",
-    n: 6,
     xid: "verotica_info",
     tiktok: "verotica_info",
     timetree: "verotica_info",
@@ -557,7 +554,6 @@ const data = {
 
   galatia: {
     name: "ガラチア",
-    n: 8,
     xid: "Galatia_osaka",
     tiktok: "Galatia_osaka",
     timetree: "galatia_osaka",
@@ -704,7 +700,8 @@ const data = {
         tiktok: "mizukitan",
         visual: "./assets/img/aoi.jpeg",
         id: "aoi",
-        isActive: true,
+        isActive: false,
+        graduated: "2024/12/01",
         images: [
           "GUYeihaaAAAr7p_.jpeg",
           "F9mvPlCbMAEgLYZ.jpeg",
@@ -731,7 +728,8 @@ const data = {
         tiktok: "minmindaha__x",
         visual: "./assets/img/rai.jpeg",
         id: "rai",
-        isActive: true,
+        isActive: false,
+        graduated: "2024/12/01",
         images: [
           "GOa8bmWaIAALG4W.jpeg",
           "F8PxHIWacAA9dgy.jpeg",
@@ -748,7 +746,7 @@ const data = {
         kana: "みろく ゆに",
         colorName: "緑",
         color: "緑",
-        copy: " 天上天下ゆに我独尊♡",
+        copy: "天上天下ゆに我独尊♡",
         birthday: "10/2",
         xid: "necomgmg_",
         xsub: "neco4nge",
@@ -769,12 +767,48 @@ const data = {
           "GRo1XNcaUAIaO0n.jpeg",
         ],
       },
+      charo: {
+        name: "今世 ちゃろ",
+        kana: "こんせ ちゃろ",
+        colorName: "水色",
+        color: "水色",
+        copy: "今世でも逢えたね",
+        birthday: "1/28",
+        xid: "m_m40_2",
+        xsub: "mm_cx_m",
+        ig: "m_m40_2",
+        tiktok: "m_m40_2",
+        visual: "./assets/img/charo.jpeg",
+        id: "charo",
+        isActive: true,
+        join: "2024/12/02",
+        images: ["Gd4NaS5bsAIp-kJ.jpeg"],
+      },
+      mukuro: {
+        name: "骨焚 むくろ",
+        kana: "かるた むくろ",
+        colorName: "赤",
+        color: "赤",
+        copy: "骨の髄まで喰らって離さない",
+        birthday: "1/6",
+        xid: "69r0_",
+        ig: "butikoro",
+        tiktok: "butikoro",
+        visual: "./assets/img/mukuro.jpeg",
+        id: "mukuro",
+        isActive: true,
+        join: "2024/12/02",
+        images: [
+          "GdpQvAiW0AAd7cu.jpeg",
+          "GWdhgZAWkAA70D2.jpeg",
+          "GXvYe-1akAElAUn.jpeg",
+        ],
+      },
     },
   },
 
   shirayuri: {
     name: "白百合と雨",
-    n: 7,
     xid: "shirayuri__info",
     tiktok: "shirayuri_info",
     timetree: "shirayuritoame",
@@ -886,7 +920,7 @@ const data = {
         kana: "しまずい あや",
         /*xid: "nx___007",*/
         xid: "ay_shirayuri",
-        xsub: "___w27a",
+        /*xsub: "___w27a",*/
         ig: "s0aya_il",
         tiktok: "___yy095",
         colorName: "ピンク",
@@ -955,7 +989,6 @@ const data = {
 
   villains: {
     name: "VILLAINS HOUSE",
-    n: 8,
     xid: "villains_info",
     tiktok: "villains_info",
     timetree: "villainshouse_info",
@@ -1156,7 +1189,6 @@ const data = {
   },
   kuraisekai: {
     name: "クライセカイ",
-    n: 6,
     xid: "kuraisekai_info",
     tiktok: "kuraisekai_info",
     timetree: "kuraisekai_info",
@@ -1300,7 +1332,6 @@ const data = {
   },
   gimmick: {
     name: "ギミック",
-    n: 5,
     xid: "gimmick__info_",
     ig: "gimmick__info_",
     tiktok: "gimmick__info_",
@@ -1429,7 +1460,6 @@ const data = {
   },
   enma: {
     name: "閻魔ちゃん",
-    n: 1,
     xid: "enmachan_info",
     class: 4,
     prefecture: "東京",
@@ -1463,7 +1493,6 @@ const data = {
   },
   jukusei: {
     name: "サークルライチ塾生",
-    n: 5,
     xid: "enmachan_info",
     class: 4.5,
     prefecture: "東京",
@@ -1577,6 +1606,27 @@ const data = {
           "GGxza32bgAANzQA.jpeg ",
           "GRtr2DSaYAAzLry.jpeg ",
           "GZ7Ql5aasAAEDhv.jpeg",
+        ],
+      },
+      yuui: {
+        name: "古月ゆうい",
+        kana: "こづきゆうい",
+        xid: "kozuki_yuui",
+        xsub: "",
+        ig: "kozuki_yuui",
+        tiktok: "kozukiyuui",
+        colorName: "コズミックブルー",
+        color: "青",
+        copy: "『こづのこと、好きってゆうて〜？』",
+        birthday: "5/23",
+        visual: "./assets/img/yuui.jpeg",
+        id: "yuui",
+        isActive: true,
+        join: "2024/12/07",
+        images: [
+          "/Gb2xYJRbwAEm58_.jpeg",
+          "/GbcuMmXbEAAUt9_.jpeg",
+          "/GcQb6V4akAAnrVj.jpeg",
         ],
       },
     },
