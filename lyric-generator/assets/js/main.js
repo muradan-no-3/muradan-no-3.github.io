@@ -44,7 +44,7 @@ const PROPERTY = {
       y: 140,
     },
     lyric: {
-      font: "500 36px 'Noto Sans',sans-serif",
+      font: "500 36px 'Noto Sans','Roboto',sans-serif",
       color: { default: "#00000088", active: "#000000" },
       leading: 80,
       lineHeight: 64,
@@ -72,7 +72,7 @@ const PROPERTY = {
       y: 136,
     },
     lyric: {
-      font: "500 64px 'Noto Sans',sans-serif",
+      font: "600 64px 'Noto Sans','Roboto',sans-serif",
       color: { default: "#ffffffaa", active: "#ffffff" },
       leading: 120,
       lineHeight: 80,
@@ -102,7 +102,7 @@ const PROPERTY = {
       textAlign: "center",
     },
     lyric: {
-      font: "400 45px 'Noto Sans',sans-serif",
+      font: "400 45px 'Noto Sans','Roboto',sans-serif",
       color: { default: "#000000", active: "#ffffff" },
       leading: 90,
       lineHeight: 68,
