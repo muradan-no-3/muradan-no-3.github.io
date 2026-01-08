@@ -114,7 +114,7 @@ const PROPERTY = {
 
 const DEFAULT_PROPS = {
   style: "apple",
-  jacket: "../../sample2.jpg",
+  jacket: "/sample2.jpg",
   title: "Blue days",
   artist: "Quubi",
   lyric: "君がいない日々\nそれこそが君を\n一番近くに感じさせている",
@@ -122,7 +122,7 @@ const DEFAULT_PROPS = {
 const DEFAULT_PROPS_ = {
   style: "apple",
   background: "#ffffff",
-  jacket: "../../sample.jpg",
+  jacket: "/sample.jpg",
   title: "メロメロメロイック",
   artist: "LADYBABY",
   lyric: "メロメロメロイック!\nサブカルチャー沸かせ\nワールドワイド",
@@ -167,8 +167,6 @@ async function getRenderProps() {
     inputs[name] = document.getElementsByName(name);
   });
 
-  console.log(inputs);
-
   const entries = await Promise.all(
     Object.entries(inputs).map(async ([name, elms]) => {
       const val = await getValue(elms[0]);
@@ -177,7 +175,6 @@ async function getRenderProps() {
   );
 
   const props = Object.fromEntries(entries);
-  console.log(props);
   return props;
 }
 
