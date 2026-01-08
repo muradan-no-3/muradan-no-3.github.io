@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--STYLE-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!--SCRIPT-->
+    <script src="./assets/js/main.js"></script>
+    <!--FONTS-->
+    <title>Lyric Image Generator</title>
+  </head>
+  <body>
+    <main class="main">
+      <div id="controller" class="controller">
+        <fieldset class="controller__set">
+          <legend>ジャケット</legend>
+          <label>
+            <input
+              type="file"
+              name="jacket"
+              accept="image/jpeg,image/png,image/webp,image/svg"
+            />
+          </label>
+        </fieldset>
+        <fieldset class="controller__set">
+          <legend>テキスト入力</legend>
+          <label
+            >曲名<input type="text" name="title" value="Blue days"
+          /></label>
+          <label
+            >アーティスト名<input type="text" name="artist" value="Quubi"
+          /></label>
+          <label>
+            <span>歌詞</span>
+            <textarea name="lyric" id="" rows="3">
+君がいない日々
+それこそが君を
+一番近くに感じさせている</textarea
+            >
+          </label>
+        </fieldset>
+
+        <fieldset class="controller__set">
+          <legend class="controller__title">背景色</legend>
+          <label
+            ><input type="color" name="background" value="#888888"
+          /></label>
+        </fieldset>
+
+        <fieldset class="controller__set">
+          <legend class="controller__title">スタイル</legend>
+          <div class="controller__items">
+            <label
+              ><input type="radio" name="style" value="simple" />Simple</label
+            >
+            <label
+              ><input type="radio" name="style" value="apple" checked />Apple
+              Music</label
+            >
+            <label
+              ><input type="radio" name="style" value="spotify" />Spotify</label
+            >
+          </div>
+          <!-- /.controller__items -->
+        </fieldset>
+      </div>
+      <!-- /.controller -->
+      <div class="canvas">
+        <canvas id="canvas" class="canvas__main"></canvas>
+      </div>
+      <!-- /.canvas -->
+      <div class="overlay">
+        <img src="./spotify_comp.jpg" alt="" />
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
