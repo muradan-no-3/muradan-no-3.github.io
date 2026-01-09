@@ -44,7 +44,7 @@ export const PROPERTY = {
       y: 140,
     },
     lyric: {
-      font: "500 36px 'Noto Sans','Roboto',sans-serif",
+      font: "500 36px 'Noto Sans','Roboto','Noto Sans CJK',sans-serif",
       color: { default: "#00000088", active: "#000000" },
       leading: 80,
       lineHeight: 64,
@@ -72,7 +72,8 @@ export const PROPERTY = {
       y: 136,
     },
     lyric: {
-      font: "600 64px 'Noto Sans','Roboto',sans-serif",
+      font: "500 64px sans-serif",
+      android: "700 64px sans-serif",
       color: { default: "#ffffffaa", active: "#ffffff" },
       leading: 120,
       lineHeight: 80,

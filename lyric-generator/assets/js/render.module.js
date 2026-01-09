@@ -1,4 +1,4 @@
-import { getValue } from "./util.module.js";
+import { getValue, isAndroid } from "./util.module.js";
 import {
   createRoundRect,
   calculateTextHeight,
@@ -134,7 +134,9 @@ export function renderImage(canvas, inputs, callRenderButton = true) {
     ctx.fillText(artist, PROPERTY[style].artist.x, PROPERTY[style].artist.y);
 
     ctx.textAlign = "left";
-    ctx.font = PROPERTY[style].lyric.font;
+    ctx.font = isAndroid()
+      ? PROPERTY[style].lyric.android
+      : PROPERTY[style].lyric.font;
 
     let renderedHeight = 0;
     lyric.split("\n").forEach((line, l) => {
@@ -159,9 +161,17 @@ export function renderImage(canvas, inputs, callRenderButton = true) {
         PROPERTY[style].lyric.leading
       );
     });
+    if (callRenderButton) renderLyricButton(canvas, inputs);
+    renderImageForSave(canvas);
   };
+}
 
-  if (callRenderButton) renderLyricButton(canvas, inputs);
+function renderImageForSave(canvas) {
+  const wrapper = document.getElementById("js-lyric-button");
+  /* 保存用の画像を描画 */
+  const img = document.createElement("img");
+  img.src = canvas.toDataURL("image/png");
+  wrapper.appendChild(img);
 }
 
 function renderLyricButton(canvas, inputs) {

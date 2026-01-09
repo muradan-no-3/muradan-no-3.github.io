@@ -218,15 +218,27 @@ body {
   position: absolute;
   scale: 0.5;
   margin: -50%;
+  z-index: 0;
+
   > label {
     pointer-events: all;
+    position: relative;
     cursor: pointer;
     display: block;
     color: #fff0;
     user-select: none;
+    z-index: 99;
     input[type="checkbox"] {
       @include visually-hidden;
     }
+  }
+
+  > img {
+    pointer-events: all;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
   }
 }
 

@@ -27,3 +27,11 @@ export function getValue(input) {
     return input.value;
   }
 }
+
+export function isAndroid() {
+  if (navigator.userAgent.match(/Android.+Mobile/)) {
+    return true;
+  } else {
+    return false;
+  }
+}

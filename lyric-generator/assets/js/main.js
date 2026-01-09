@@ -6,13 +6,6 @@ import {
   renderImage,
 } from "./render.module.js";
 
-import {
-  downloadCanvas,
-  shareCanvas,
-  showRightClickMenu,
-  modalClickHandler,
-} from "./saveMenu.module.js";
-
 import { CANVAS_WIDTH } from "./constants.module.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -66,19 +59,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const default_props = getRenderProps();
 
   renderImage(canvas, default_props);
-
-  /* スマホ用のロングタップメニュー */
-  let timer = null;
-  canvas.addEventListener("touchstart", (e) => {
-    timer = setTimeout(() => {
-      showRightClickMenu(e.touches[0].clientX, e.touches[0].clientY);
-    }, 600);
-  });
-  canvas.addEventListener("touchend", () => {
-    clearTimeout(timer);
-  });
 });
 
 window.renderImageByCurrentSetting = renderImageByCurrentSetting;
-window.downloadCanvas = downloadCanvas;
-window.shareCanvas = shareCanvas;
