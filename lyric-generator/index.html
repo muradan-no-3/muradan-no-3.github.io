@@ -12,13 +12,22 @@
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!--SCRIPT-->
-    <script src="./assets/js/main.js?ver=202601082247"></script>
+    <script type="module" src="./assets/js/main.js?ver=202601082247"></script>
     <!--FONTS-->
     <title>Lyric Image Generator</title>
   </head>
   <body>
     <main class="main">
       <div id="controller" class="controller">
+        <fieldset class="controller__set">
+          <legend>データ取得</legend>
+          <label
+            >URL<input
+              type="text"
+              name="music_url"
+              placeholder="サブスクリプションの共有URL"
+          /></label>
+        </fieldset>
         <fieldset class="controller__set">
           <legend>ジャケット</legend>
           <label>
@@ -27,19 +36,28 @@
               name="jacket"
               accept="image/jpeg,image/png,image/webp,image/svg"
             />
+            <input type="hidden" name="jacket_src" value="/bluedays.jpg" />
           </label>
         </fieldset>
         <fieldset class="controller__set">
           <legend>テキスト入力</legend>
           <label
-            >曲名<input type="text" name="title" value="Blue days"
+            >曲名<input
+              type="text"
+              name="title"
+              placeholder="曲名を入力"
+              value="Blue days"
           /></label>
           <label
-            >アーティスト名<input type="text" name="artist" value="Quubi"
+            >アーティスト名<input
+              type="text"
+              name="artist"
+              placeholder="アーティスト名を入力"
+              value="Quubi"
           /></label>
           <label>
             <span>歌詞</span>
-            <textarea name="lyric" id="" rows="3">
+            <textarea name="lyric" id="" rows="3" placeholder="歌詞を入力">
 君がいない日々
 それこそが君を
 一番近くに感じさせている</textarea
@@ -77,6 +95,13 @@
       </div>
       <!-- /.canvas -->
     </main>
-    <footer></footer>
+    <dialog id="rightClickMenu" class="modal">
+      <div class="dialog-container">
+        <div class="menu-buttons">
+          <button onclick="downloadCanvas(canvas)">画像をダウンロード</button>
+          <button onclick="shareCanvas(canvas)">画像を共有</button>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>

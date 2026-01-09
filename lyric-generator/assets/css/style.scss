@@ -1,6 +1,7 @@
 :root {
   /* COLORS */
   --color-background: #535353;
+  --color-text-gray: #b1b1b1;
   --color-text-white: #eaeaea;
   --color-theme-blue: #11acba;
   --color-theme-light-blue: #17d3e4;
@@ -107,6 +108,11 @@ body {
         color: var(--color-theme-text);
         border: none;
         border-radius: 6px;
+
+        &::placeholder {
+          color: var(--color-text-gray);
+          font-weight: 400;
+        }
 
         &:focus {
           outline: 2px solid var(--color-theme-blue);
@@ -234,4 +240,39 @@ body {
   right: 0;
   opacity: 0;
   pointer-events: none;
+}
+
+dialog {
+  background: none;
+  border: none;
+  .dialog-container {
+    min-width: 240px;
+  }
+}
+
+.modal {
+  &::backdrop {
+    background: #00000088;
+  }
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  padding-block: 8px;
+  overflow: hidden;
+
+  > button {
+    height: 48px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &:active {
+      background: #eeeeee;
+    }
+  }
 }
